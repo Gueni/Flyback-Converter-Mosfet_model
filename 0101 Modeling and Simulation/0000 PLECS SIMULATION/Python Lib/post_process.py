@@ -23,7 +23,7 @@ import re
 
 def png_to_hex_base64():
     imghexdata      = ''
-    img_path        = (os.path.join(os.getcwd(), "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/OBC.png")).replace("\\", "/") 
+    img_path        = (os.path.join(os.getcwd(), "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png")).replace("\\", "/") 
     screen = screeninfo.get_monitors()[0]
     screen_width, screen_height = screen.width, screen.height
     target_width    = int(screen_width * 0.5)  
@@ -98,14 +98,10 @@ def gen_plots(resFile, html_file, OPEN=False):
         fig.add_trace(go.Scatter(x=df.iloc[:,0], y=df.iloc[:,i], mode='lines', name=mdl.Waveforms[i-1]), row=i, col=1)
     fig.update_layout   (
         plot_bgcolor='#e9f5f9',
-        title_text      =   "OBC WAVEFORMES",
+        title_text      =   "flyback WAVEFORMES",
         showlegend      =   False,
         title           =   dict(font    =  dict(family  ="Arial", size=30 ))
                         )
-    LLC                 = ['HS1','HS2','LS1','LS2','SRHS1','SRHS2','SRLS1','SRLS2','RC1','RC2','RC3','RC4','HS3','LS3']             
-    PFC                 = ['HS1','HS2','LS1','LS2']
-    mdlvar_flat         = delete_keys_from_dict(LLC, mdl.ModelVars,'LLC')
-    mdlvar_flat         = delete_keys_from_dict(PFC, mdlvar_flat,'PFC')
     mdlvar_flat         = flatten_dict(convert_to_ordereddict(copy.deepcopy(mdl.ModelVars)))
     file_path           = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  # Replace with your Python file path
     unit ,comments      = extract_comments(file_path)
@@ -121,7 +117,7 @@ def gen_plots(resFile, html_file, OPEN=False):
     for i in range(len(mdl.Waveforms)):
         fig.update_xaxes(title_text="Time [s]", row=i+1, col=1)
     fig.update_layout(height=300*len(mdl.Waveforms))  
-    title        = f"Single Phase EV OBC_{mdl.utc_numeric}_{mdl.sim_idx}"
+    title        = f"flyback_{mdl.utc_numeric}_{mdl.sim_idx}"
     html_content = f"""
                         <!DOCTYPE html>
                         <html lang="en">
@@ -132,7 +128,7 @@ def gen_plots(resFile, html_file, OPEN=False):
                         </head>
                         <body>
                             <div class="center">
-                                <img src="data:image/png;base64,{png_to_hex_base64()}" alt="OBC.png">
+                                <img src="data:image/png;base64,{png_to_hex_base64()}" alt="flyback.png">
                             </div>
                         </body>
                         </html>

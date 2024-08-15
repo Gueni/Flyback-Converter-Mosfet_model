@@ -1,10 +1,11 @@
 
 #?----------------------------------------------------------------------------------------------------------------------------------------
-#?                                                             ____  ____  ______
-#?                                                            / __ \/ __ )/ ____/
-#?                                                           / / / / __  / /
-#?                                                          / /_/ / /_/ / /___
-#?                                                          \____/_____/\____/
+#?                                                         ______      __               __  
+#?                                                        / __/ /_  __/ /_  ____ ______/ /__
+#?                                                       / /_/ / / / / __ \/ __ `/ ___/ //_/
+#?                                                      / __/ / /_/ / /_/ / /_/ / /__/ ,<   
+#?                                                     /_/ /_/\__, /_.___/\__,_/\___/_/|_|  
+#?                                                           /____/
 #?
 #?----------------------------------------------------------------------------------------------------------------------------------------
 import plecs as plc
@@ -15,7 +16,7 @@ import cleardata
 port                = "1080"                                                               
 url                 = f"http://localhost:{port}/RPC2"                                      
 mdlvar              = mdl.ModelVars                                                        
-modelname           = "OBC"                                                                
+modelname           = "flyback"                                                                
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim              = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)    
 plcsim.rpc_connect()                                                                       
@@ -23,7 +24,7 @@ plcsim.load_model()
 cleardata.clear_data_folders()                                                                  
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim.logParams(str(mdlvar['ToFile']['logfile']),mdlvar)
-plcsim.ClearAllTraces(mdl.scopes)  
+# plcsim.ClearAllTraces(mdl.scopes)  
 plcsim.Set_sim_param()
 plcsim.launch_sim(modelname=modelname)
 # plcsim.HoldAllTraces(mdl.scopes)
