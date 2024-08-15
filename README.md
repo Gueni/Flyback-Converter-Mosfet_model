@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="/icons/espLogo.png">
+  <img  src="0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png">
 </p>
 
 
