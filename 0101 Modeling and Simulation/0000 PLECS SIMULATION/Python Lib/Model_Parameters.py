@@ -9,12 +9,9 @@
 #!                                  
 #!----------------------------------------------------------------------------------------------------------------------------------------
 import os 
-from datetime import datetime, timezone
-#!----------------------------------------------------------------------------------------------------------------------------------------
-utc_now             = datetime.now(timezone.utc)                                                            
-utc_numeric         = utc_now.strftime("%H%M%S")                                                            
-current_directory   = os.getcwd()                                                                           
-sim_idx             = 0                                                                                     
+import time 
+#!----------------------------------------------------------------------------------------------------------------------------------------                                                         
+current_directory   = os.getcwd()                                                                                                                                                              
 Traces_path         = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Traces/"           
 ToFile_path         = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/CSV/"              
 logfile_path        = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Log/"              
@@ -27,17 +24,9 @@ Sim_param 	= {
                   'load_tflip'	   : 0.01*   0.5,                                                          #? [s]     - Time at which the load changes state 
                   'maxStep'		   : 1e-3,                                                                 #? [s]     - Maximum simulation time step
                   'ZeroCross'       : 1000,                                                                 #? [/]     - Zero-crossing detection limit
-                  'rel_tol'		   : 1e-7                                                                  #? [/]     - Relative tolerance for the numerical solver
+                  'rel_tol'		   : 1e-7                                                                 #? [/]     - Relative tolerance for the numerical solver
                }
-ToFile      = {                                                                                             
-                  'ToFile_path'		: (os.path.join(current_directory,                                      #? [/]     - Path for saving results in CSV format 
-                   ToFile_path+f"Results_{utc_numeric}_{sim_idx}.csv")).replace("\\", "/"),                                 
-                  'logfile'		   : (os.path.join(current_directory,                                      #? [/]     - Path for saving log file 
-                   logfile_path+f"Log_{utc_numeric}_{sim_idx}.log")).replace("\\", "/"),                                 
-                  'output_html'     : (os.path.join(current_directory,                                      #? [/]     - Path for saving simulation results in HTML format
-                   output_html_path+f"Html_{utc_numeric}_{sim_idx}.html")).replace("\\", "/"),              
-                  'Traces'		      : (os.path.join(current_directory,                                      #? [/]     - Path for saving simulation traces
-                   Traces_path)).replace("\\", "/")  ,                                                      
+ToFile      = {   
                   'Ts'              : 10e-6,                                                                #? [s]     - Sampling time for saving data
                   'tsave' 	    	   : Sim_param['tSim']-0                                                   #? [s]     - Time point at which the data is saved
                }  
@@ -122,16 +111,16 @@ RCD         = {
                   't_init'		      : 25                                                                    #? [°C]     - Initial temperature of the diode 
                }
 RC_snub     = {                                                                                             
-                  'Rsnub'           : 1e3,                                                                  #? [Ohm]    - Resistor value in the RC snubber
+                  'Rsnub'           : 2  ,                                                                  #? [Ohm]    - Resistor value in the RC snubber
                   'Csnub'           :  {                                                                                           
                                           'Config'		      : 2,                                            #? [/]      - Configuration of the snubber capacitor
-                                          'Cap_s'    		   : 1e-9,                                         #? [F]      - Snubber capacitance value 
-                                          'Resr_s'		      : 1e-5,                                         #? [Ohm]    - Equivalent series resistance of the snubber capacitor 
-                                          'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of the snubber capacitor 
+                                          'Cap_s'    		   : 8e-06,                                        #? [F]      - Snubber capacitance value 
+                                          'Resr_s'		      : 1e-5,                                         #? [Ohm]    - Equivalent series resistance of Csnub 
+                                          'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of Csnub 
                                           'Npara'		      : 1,                                            #? [/]      - Number of parallel snubber capacitors
                                           'Nseri'		      : 1,                                            #? [/]      - Number of series snubber capacitors
-                                          'Vinit'		      : 0,                                            #? [V]      - Initial voltage across the snubber capacitor 
-                                          'Iinit'		      : 0                                             #? [A]      - Initial current through the snubber capacitor       
+                                          'Vinit'		      : 0,                                            #? [V]      - Initial voltage across Csnub 
+                                          'Iinit'		      : 0                                             #? [A]      - Initial current through Csnub       
                                           },    
                }
 diode       = {
@@ -257,6 +246,8 @@ Waveforms   =  [
                   'Vout2',
                   'Iout2',
                   'Total Power Loss',
+                  'Input Power',
+                  'Output Power',
                   'Efficiency'
                ]		
 Units       =  [                                                                                            
@@ -335,7 +326,9 @@ Units       =  [
                   '[ A ]',                  
                   '[ V ]',                  
                   '[ A ]',               
-                  '[ W ]',                 
+                  '[ W ]',   
+                  '[ W ]', 
+                  '[ W ]',               
                   '[ % ]',                   
                ]
 #!----------------------------------------------------------------------------------------------------------------------------------------	

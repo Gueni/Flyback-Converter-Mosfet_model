@@ -62,7 +62,8 @@ class simpy:
         for val in scopelist:
             self.server.plecs.scope(val,'ClearTraces')
 
-    def Set_sim_param(self):
+    def Set_sim_param(self,mdlvars):
+        self.modelvar = mdlvars
         self.opts =  {'ModelVars' :  self.modelvar} 
 
     def launch_sim(self,modelname):

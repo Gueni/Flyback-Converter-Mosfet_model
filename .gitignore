@@ -154,3 +154,4 @@ cython_debug/
 *.html
 *.csv
 *.log
+test.py

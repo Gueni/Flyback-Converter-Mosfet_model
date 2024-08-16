@@ -18,7 +18,6 @@ from PIL import Image
 import screeninfo
 import copy
 from collections import OrderedDict
-import re
 #?----------------------------------------------------------------------------------------------------------------------------------------
 
 def png_to_hex_base64():
@@ -102,7 +101,9 @@ def gen_plots(resFile, html_file, OPEN=False):
         showlegend      =   False,
         title           =   dict(font    =  dict(family  ="Arial", size=30 ))
                         )
-    mdlvar_flat         = flatten_dict(convert_to_ordereddict(copy.deepcopy(mdl.ModelVars)))
+    ToFile              = ['sim_idx','utc_numeric','ToFile_path','logfile','output_html','Traces']
+    mdlvar_flat         = delete_keys_from_dict(ToFile, copy.deepcopy(mdl.ModelVars),'ToFile')
+    mdlvar_flat         = flatten_dict(convert_to_ordereddict(mdlvar_flat))
     file_path           = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  # Replace with your Python file path
     unit ,comments      = extract_comments(file_path)
     table_fig           = go.Figure(data=[go.Table(
@@ -118,7 +119,7 @@ def gen_plots(resFile, html_file, OPEN=False):
         fig.update_xaxes(title_text="Time [s]", row=i+1, col=1)
         fig.update_yaxes(title_text=mdl.Units[i], row=i+1, col=1)
     fig.update_layout(height=300*len(mdl.Waveforms))  
-    title        = f"flyback_{mdl.utc_numeric}_{mdl.sim_idx}_MOHAMED_GUENI"
+    title        = f"flyback_{mdl.ModelVars['ToFile']['utc_numeric']}_{mdl.ModelVars['ToFile']['sim_idx']}_MOHAMED_GUENI"
     html_content = f"""
                         <!DOCTYPE html>
                         <html lang="en">
