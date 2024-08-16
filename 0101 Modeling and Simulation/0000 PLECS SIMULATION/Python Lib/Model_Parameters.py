@@ -81,7 +81,7 @@ CTRL        = {
                }
 Cout        = {                                                                                             
                   'Config'		      : 1,                                                                    #? [/]      - Configuration of the output capacitor
-                  'Cap_s'    		   : 100e-6,                                                               #? [F]      - Capacitance value  
+                  'Cap_s'    		   : 220e-6,                                                               #? [F]      - Capacitance value  
                   'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
                   'Lesl_s'	         : 1e-19,                                                                #? [H]      - Equivalent series inductance of the capacitor 
                   'Npara'		      : 1,                                                                    #? [/]      - Number of parallel capacitors
