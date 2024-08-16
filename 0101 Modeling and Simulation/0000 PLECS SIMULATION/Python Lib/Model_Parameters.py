@@ -23,8 +23,8 @@ model_path          = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/
 model_directory     = (os.path.join(current_directory, model_path)).replace("\\", "/")                                        
 #!----------------------------------------------------------------------------------------------------------------------------------------
 Sim_param 	= {                                                                                             
-                  'tSim'	    	   : 1e-3,                                                                 #? [s]     - 
-                  'load_tflip'	   : 1e-3*   0.5,                                                          #? [s]     -  
+                  'tSim'	    	   : 0.1,                                                                  #? [s]     - 
+                  'load_tflip'	   : 0.1*   0.5,                                                           #? [s]     -  
                   'maxStep'		   : 1e-3,                                                                 #? [/]     - 
                   'ZeroCross'       : 1000,                                                                 #? [/]     - 
                   'rel_tol'		   : 1e-7                                                                  #? [/]     - 

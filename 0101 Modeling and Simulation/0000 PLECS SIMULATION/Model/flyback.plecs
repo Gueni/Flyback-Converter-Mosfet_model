@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 26; 1536, 780]
+    Location      [0, 23; 1536, 777]
     ZoomFactor    0.873844
     SliderPosition [0, 38]
     ShowBrowser   off
@@ -9235,7 +9235,7 @@ Plecs {
       }
       Parameter {
         Variable      "Configuration"
-        Value         "2"
+        Value         "1"
         Show          off
       }
     }
@@ -9305,7 +9305,7 @@ Plecs {
         Direction     down
       }
       TerminalNames { "Gate", "+", "-", "Ambient" }
-      Location      [0, 26; 1536, 780]
+      Location      [0, 23; 1536, 758]
       ZoomFactor    1
       SliderPosition [0, 0]
       ShowBrowser   off
@@ -10929,6 +10929,249 @@ Plecs {
             Points        [315, 280]
           }
         }
+        Name          "Pass"
+        Schematic {
+          Component {
+            Type          Input
+            Name          "Gate"
+            Show          off
+            Position      [85, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "+"
+            Show          off
+            Position      [200, 65]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "-"
+            Show          off
+            Position      [200, 380]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am1"
+            Show          off
+            Position      [200, 335]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          HeatPort
+            Name          "Ambient"
+            Show          off
+            Position      [345, 280]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [145, 290]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-10, -10; 10, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "0"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am1"
+            SrcTerminal   2
+            DstComponent  "-"
+            DstTerminal   1
+          }
+        }
+        Name          "Short"
+        Schematic {
+          Component {
+            Type          Input
+            Name          "Gate"
+            Show          off
+            Position      [85, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "+"
+            Show          off
+            Position      [200, 65]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "-"
+            Show          off
+            Position      [200, 380]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am1"
+            Show          off
+            Position      [200, 335]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          HeatPort
+            Name          "Ambient"
+            Show          off
+            Position      [345, 280]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [145, 290]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-10, -10; 10, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "0"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am1"
+            SrcTerminal   2
+            DstComponent  "-"
+            DstTerminal   1
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Ambient"
+            SrcTerminal   1
+            Points        [315, 280]
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am1"
+            SrcTerminal   1
+            DstComponent  "+"
+            DstTerminal   1
+          }
+        }
       }
       Parameter {
         Variable      "Configuration"
@@ -11438,4 +11681,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "lmT9Qs+Z+wBVk5KZuTvnfWXwPm81phajC8r2PzerKfQ="
+DemoSignature "/D+du4fiXV5svi4so6gBbHtCQ+Bcxr69wUBUVltO5zE="
