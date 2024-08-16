@@ -3,5 +3,6 @@
 </p>
 
 
+![](https://github.com/0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/report.gif)
 
 ----
