@@ -22,9 +22,9 @@ output_html_path    = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python
 model_path          = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/flyback.plecs"                  
 model_directory     = (os.path.join(current_directory, model_path)).replace("\\", "/")                                        
 #!----------------------------------------------------------------------------------------------------------------------------------------
-Sim_param 	= {                                                                                             
-                  'tSim'	    	   : 0.1,                                                                  #? [s]     - 
-                  'load_tflip'	   : 0.1*   0.5,                                                           #? [s]     -  
+Sim_param 	= {                                                                                            
+                  'tSim'	    	   : 0.01,                                                                 #? [s]     - 
+                  'load_tflip'	   : 0.01*   0.5,                                                          #? [s]     -  
                   'maxStep'		   : 1e-3,                                                                 #? [/]     - 
                   'ZeroCross'       : 1000,                                                                 #? [/]     - 
                   'rel_tol'		   : 1e-7                                                                  #? [/]     - 
@@ -38,7 +38,7 @@ ToFile      = {
                    output_html_path+f"Html_{utc_numeric}_{sim_idx}.html")).replace("\\", "/"),              
                   'Traces'		      : (os.path.join(current_directory,                                      #? [/]      - 
                    Traces_path)).replace("\\", "/")  ,                                                      
-                  'Ts'              : 0,                                                                    #? [s]      - 
+                  'Ts'              : 10e-6,                                                                #? [s]      - 
                   'tsave' 	    	   : Sim_param['tSim']-0                                                   #? [s]      - 
                }  
 SW          = {                                                                                             
@@ -48,10 +48,7 @@ SW          = {
                   'Rgoff'           : 2.5,                                                                  #? [Ohm]    - 
                   'Vdsmax'          : 1200,                                                                 #? [/]      - 
                   'Idsmax'          : 100,                                                                  #? [/]      - 
-                  'Tjmax'           : 175,                                                                  #? [/]      -                   
-                  'Tjmin'           : -40,                                                                  #? [/]      -                  
                   'ron_mosfet'      : 0.04,                                                                 #? [Ohm]    - 
-                  'Rds_off'         : 0,                                                                    #? [Ohm]    - 
                   'Iinit'           : 0,                                                                    #? [/]      - 
                   'Coss'            :  {                                                                                           
                                           'Config'		      : 5,                                            #? [/]      - 
@@ -63,17 +60,10 @@ SW          = {
                                           'Vinit'		      : 0,                                            #? [/]      - 
                                           'Iinit'		      : 0                                             #? [/]      -       
                                           },                                                               
-                  'vblock'          : 1,                                                                    #? [/]      - 
-                  'Idrain'          : 0,                                                                    #? [/]      - 
-                  'Trise'           : 1e-10,                                                                #? [/]      - 
-                  'Tfall'           : 1e-10,                                                                #? [/]      - 
                   'therm_body_diode': 'file:C3M0021120K_bodydiode',                                         #? [/]      - 
                   'ron_body_diode'  : 5e-3,                                                                 #? [Ohm]    - 
                   'Rdb_off'         : 0,                                                                    #? [Ohm]    - 
                   'vf_body_diode'   : 0.6,                                                                  #? [/]      - 
-                  'BD_If'           : 0,                                                                    #? [/]      - 
-                  'T_reverse'       : 0,                                                                    #? [/]      - 
-                  'Q_reverse'       : 0,                                                                    #? [/]      -      
                   'nPara'           : 1,                                                                    #? [/]      - 
                   'T_init'          : 25,                                                                   #? [/]      - 
                   'Tamb'            : 25,                                                                   #? [/]      - 
@@ -136,12 +126,25 @@ RCD         = {
                   'R'               : 80,                                                                   #? [Ohm]    - 
                   'C'               : 1e-8,                                                                 #? [Ohm]    - 
                   'diode'		      : 'file:C4D40120D',                                                     #? [/]      - diode thermal description       
-                  'ron_diode'		   : 0.04,                                                                 #? [Ohm]    - diode forward voltage    
+                  'ron_diode'		   : 0.6,                                                                  #? [Ohm]    - diode forward voltage    
                   'vf_diode'		   : 0.6,                                                                  #? [V]      - diode forward voltage
                   'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - thermal resistance case-heatsink (grease)       
                   'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes      
                   'rth_ch'		      : 0.1,                                                                  #? [K/W]    - Heatsink to ambient thermal resistance    
                   't_init'		      : 25                                                                    #? [C]      - initial temperature   
+               }
+RC_snub     = {                                                                                             
+                  'Rsnub'           : 10,                                                                   #? [Ohm]    - 
+                  'Csnub'           :  {                                                                                           
+                                          'Config'		      : 2,                                            #? [/]      - 
+                                          'Cap_s'    		   : 10e-6,                                        #? [/]      - 
+                                          'Resr_s'		      : 1e-5,                                         #? [Ohm]    - 
+                                          'Lesl_s'		      : 0,                                            #? [/]      - 
+                                          'Npara'		      : 1,                                            #? [/]      - 
+                                          'Nseri'		      : 1,                                            #? [/]      - 
+                                          'Vinit'		      : 0,                                            #? [/]      - 
+                                          'Iinit'		      : 0                                             #? [/]      -       
+                                          },    
                }
 diode       = {
                   'diode'		         : 'file:C4D40120D',                                                  #? [/]      - diode thermal description       
@@ -167,7 +170,8 @@ ModelVars   = {
                   'Cout1'           :  Cout1       ,  
                   'Cout2'           :  Cout2       ,                                                                                                                          
                   'Load'            :  Load        ,                                                                
-                  'RCD'             :  RCD         ,                                                                
+                  'RCD'             :  RCD         ,    
+                  'RC_snub'         :  RC_snub     ,                                                                                                                            
                   'diode'           :  diode       ,                                                                
                   'Thermals'        :  Thermals    ,
                }	
@@ -207,8 +211,6 @@ Waveforms   =  [
                   #!-------------------------
                   'Load2 Voltage',
                   'Load2 Current',
-                  #!-------------------------
-                  'PFC output voltage',
                   #!-------------------------
                   'Core Field Strength',
                   'Core Flux Density',
@@ -267,6 +269,85 @@ Waveforms   =  [
                   'Vout',
                   'Iout',
                   'Vout2',
-                  'Iout2',
+                  'Iout2'
                ]		
+Units       =  [                                                                                            
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ W ]',                  
+                  #!-------------------------
+                  '[ A ]',                  
+                  '[ A ]',                  
+                  '[ A ]',                  
+                  '[ V ]',                  
+                  '[ V ]',                  
+                  '[ V ]',                  
+                  '[ W ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  #!-------------------------
+                  '[A/m]',
+                  '[Wb/m²]',
+                  '[A/m]',
+                  '[Wb/m²]',
+                  #!-------------------------
+                  '[A·turns]',
+                  '[Wb]',
+                  '[A·turns]',
+                  '[Wb]',
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ A ]',                  
+                  '[ C ]',                  
+                  '[ C ]',                  
+                  '[ C ]',                  
+                  '[ W ]',                  
+                  '[ W ]',                  
+                  '[ W ]',                  
+                  '[ W ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ C ]',                  
+                  '[ C ]',                  
+                  '[ W ]',                  
+                  '[ C ]',                  
+                  '[ W ]',                  
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ C ]',                  
+                  '[ C ]',                  
+                  '[ W ]',                  
+                  '[ C ]',                  
+                  '[ W ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ W ]',                  
+                  #!-------------------------
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ W ]',                  
+                  #!-------------------------                 
+                  '[ W ]',                  
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ V ]',                  
+                  '[ A ]'                 
+               ]
 #!----------------------------------------------------------------------------------------------------------------------------------------	
