@@ -24,7 +24,7 @@ plcsim.load_model()
 cleardata.clear_data_folders()                                                                  
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim.logParams(str(mdlvar['ToFile']['logfile']),mdlvar)
-# plcsim.ClearAllTraces(mdl.scopes)  
+plcsim.ClearAllTraces(mdl.scopes)  
 plcsim.Set_sim_param()
 plcsim.launch_sim(modelname=modelname)
 # plcsim.HoldAllTraces(mdl.scopes)

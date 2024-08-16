@@ -23,141 +23,129 @@ model_path          = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/
 model_directory     = (os.path.join(current_directory, model_path)).replace("\\", "/")                                        
 #!----------------------------------------------------------------------------------------------------------------------------------------
 Sim_param 	= {                                                                                            
-                  'tSim'	    	   : 0.01,                                                                 #? [s]     - 
-                  'load_tflip'	   : 0.01*   0.5,                                                          #? [s]     -  
-                  'maxStep'		   : 1e-3,                                                                 #? [/]     - 
-                  'ZeroCross'       : 1000,                                                                 #? [/]     - 
-                  'rel_tol'		   : 1e-7                                                                  #? [/]     - 
+                  'tSim'	    	   : 0.01,                                                                 #? [s]     - Total simulation time
+                  'load_tflip'	   : 0.01*   0.5,                                                          #? [s]     - Time at which the load changes state 
+                  'maxStep'		   : 1e-3,                                                                 #? [s]     - Maximum simulation time step
+                  'ZeroCross'       : 1000,                                                                 #? [/]     - Zero-crossing detection limit
+                  'rel_tol'		   : 1e-7                                                                  #? [/]     - Relative tolerance for the numerical solver
                }
 ToFile      = {                                                                                             
-                  'ToFile_path'		: (os.path.join(current_directory,                                      #? [/]      - 
+                  'ToFile_path'		: (os.path.join(current_directory,                                      #? [/]     - Path for saving results in CSV format 
                    ToFile_path+f"Results_{utc_numeric}_{sim_idx}.csv")).replace("\\", "/"),                                 
-                  'logfile'		   : (os.path.join(current_directory,                                      #? [/]      - 
+                  'logfile'		   : (os.path.join(current_directory,                                      #? [/]     - Path for saving log file 
                    logfile_path+f"Log_{utc_numeric}_{sim_idx}.log")).replace("\\", "/"),                                 
-                  'output_html'     : (os.path.join(current_directory,                                      #? [/]      - 
+                  'output_html'     : (os.path.join(current_directory,                                      #? [/]     - Path for saving simulation results in HTML format
                    output_html_path+f"Html_{utc_numeric}_{sim_idx}.html")).replace("\\", "/"),              
-                  'Traces'		      : (os.path.join(current_directory,                                      #? [/]      - 
+                  'Traces'		      : (os.path.join(current_directory,                                      #? [/]     - Path for saving simulation traces
                    Traces_path)).replace("\\", "/")  ,                                                      
-                  'Ts'              : 10e-6,                                                                #? [s]      - 
-                  'tsave' 	    	   : Sim_param['tSim']-0                                                   #? [s]      - 
+                  'Ts'              : 10e-6,                                                                #? [s]     - Sampling time for saving data
+                  'tsave' 	    	   : Sim_param['tSim']-0                                                   #? [s]     - Time point at which the data is saved
                }  
 SW          = {                                                                                             
-                  'Config'          : 1,                                                                    #? [/]      - 
-                  'therm_mosfet'    : 'file:C3M0021120K',                                                   #? [/]      - 
-                  'Rgon'            : 2.5,                                                                  #? [Ohm]    - 
-                  'Rgoff'           : 2.5,                                                                  #? [Ohm]    - 
-                  'Vdsmax'          : 1200,                                                                 #? [/]      - 
-                  'Idsmax'          : 100,                                                                  #? [/]      - 
-                  'ron_mosfet'      : 0.04,                                                                 #? [Ohm]    - 
-                  'Iinit'           : 0,                                                                    #? [/]      - 
+                  'Config'          : 1,                                                                    #? [/]      - Switch configuration 
+                  'therm_mosfet'    : 'file:C3M0021120K',                                                   #? [/]      - MOSFET thermal model file path
+                  'Rgon'            : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-on 
+                  'Rgoff'           : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-off
+                  'ron_mosfet'      : 0.04,                                                                 #? [Ohm]    - MOSFET on-state resistance 
+                  'Iinit'           : 0,                                                                    #? [A]      - Initial current through the MOSFET 
                   'Coss'            :  {                                                                                           
-                                          'Config'		      : 5,                                            #? [/]      - 
-                                          'Cap_s'    		   : 1e-12,                                        #? [/]      - 
-                                          'Resr_s'		      : 0,                                            #? [Ohm]    - 
-                                          'Lesl_s'		      : 0,                                            #? [/]      - 
-                                          'Npara'		      : 1,                                            #? [/]      - 
-                                          'Nseri'		      : 1,                                            #? [/]      - 
-                                          'Vinit'		      : 0,                                            #? [/]      - 
-                                          'Iinit'		      : 0                                             #? [/]      -       
+                                          'Config'		      : 5,                                            #? [/]      - Capacitance configuration
+                                          'Cap_s'    		   : 1e-12,                                        #? [F]      - Capacitance value 
+                                          'Resr_s'		      : 0,                                            #? [F]      - Equivalent series resistance of the capacitance
+                                          'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of the capacitance
+                                          'Npara'		      : 1,                                            #? [/]      - Number of parallel capacitors
+                                          'Nseri'		      : 1,                                            #? [/]      - Number of series capacitors
+                                          'Vinit'		      : 0,                                            #? [V]      - Initial voltage across the capacitance
+                                          'Iinit'		      : 0                                             #? [A]      - Initial current through the capacitance      
                                           },                                                               
-                  'therm_body_diode': 'file:C3M0021120K_bodydiode',                                         #? [/]      - 
-                  'ron_body_diode'  : 5e-3,                                                                 #? [Ohm]    - 
-                  'Rdb_off'         : 0,                                                                    #? [Ohm]    - 
-                  'vf_body_diode'   : 0.6,                                                                  #? [/]      - 
-                  'nPara'           : 1,                                                                    #? [/]      - 
-                  'T_init'          : 25,                                                                   #? [/]      - 
-                  'Tamb'            : 25,                                                                   #? [/]      - 
-                  't_init'          : 25,                                                                   #? [/]      - 
-                  'rth_sw'          : 0.09,                                                                 #? [/]      - 
-                  'rth_ch'          : 0.5,                                                                  #? [/]      - 
-                  'Rth'             : 0.34 	                                                               #? [/]      - 				    	                           
+                  'therm_body_diode': 'file:C3M0021120K_bodydiode',                                         #? [/]      - Body diode thermal model file path
+                  'ron_body_diode'  : 5e-3,                                                                 #? [Ohm]    - Body diode on-state resistance 
+                  'Rdb_off'         : 0,                                                                    #? [Ohm]    - Resistance when the body diode is off 
+                  'vf_body_diode'   : 0.6,                                                                  #? [V]      - Body diode forward voltage 
+                  'nPara'           : 1,                                                                    #? [/]      - Number of parallel MOSFETs
+                  'T_init'          : 25,                                                                   #? [°C]     - Initial temperature of the MOSFET 
+                  'Tamb'            : 25,                                                                   #? [°C]     - Ambient temperature 
+                  't_init'          : 25,                                                                   #? [/]      - Initial time for thermal calculations 
+                  'rth_sw'          : 0.09,                                                                 #? [K/W]    - Thermal resistance between the switch junction and case 
+                  'rth_ch'          : 0.5,                                                                  #? [K/W]    - Thermal resistance between the case and heatsink 
+                  'Rth'             : 0.34 	                                                               #? [K/W]    - Total thermal resistance 				    	                           
                }
 Trafo       = {                                                                                             
-                  'eq_per_leak'     : 5.9e-9,                                                               #? [/]      -                                   
-                  'MMF_leak'        : 0,                                                                    #? [/]      -                      
-                  'NP'              : 13,                                                                   #? [/]      -                       
-                  'NS'              : 7,                                                                    #? [/]      -                 
-                  'NS2'             : 3,                                                                    #? [/]      -
-                  'CSA_core'		   : 9.39e-5,                                                              #? [/]      - diode thermal description       
-                  'Lflux_core'		: 0.0376,                                                               #? [Ohm]    - diode forward voltage    
-                  'rel_per_core'		: 9550,                                                                 #? [V]      - diode forward voltage
-                  'Sat_per_core'		: 1,                                                                    #? [K/W]    - thermal resistance case-heatsink (grease)       
-                  'flux_dens_core'  : 0.47,                                                                 #? [/]      - Number of parallel diodes      
-                  'MMF_core'		   : 0,                                                                    #? [K/W]    - Heatsink to ambient thermal resistance    
-                  'CSA_gap'		   : 9.39e-5,                                                              #? [C]      - initial temperature   
-                  'Lflux_gap'		   : 0.00022,                                                              #? [C]      - initial temperature   
-                  'MMF_gap'		   : 0                                                                     #? [C]      - initial temperature   
+                  'eq_per_leak'     : 5.9e-9,                                                               #? [H]      - Equivalent primary leakage inductance 
+                  'MMF_leak'        : 0,                                                                    #? [A·t]    - MagnetoMotive Force (MMF) leakage 
+                  'NP'              : 13,                                                                   #? [/]      - Number of primary turns
+                  'NS'              : 7,                                                                    #? [/]      - Number of secondary turns
+                  'NS2'             : 3,                                                                    #? [/]      - Number of secondary turns for the second winding
+                  'CSA_core'		   : 9.39e-5,                                                              #? [m^2]    - Core cross-sectional area 
+                  'Lflux_core'		: 0.0376,                                                               #? [V·s]    - Core flux linkage 
+                  'rel_per_core'		: 9550,                                                                 #? [V]      - Relative permeability of the core material
+                  'Sat_per_core'		: 1,                                                                    #? [K/W]    - Saturation permeability of the core material    
+                  'flux_dens_core'  : 0.47,                                                                 #? [T]      - Magnetic flux density in the core 
+                  'MMF_core'		   : 0,                                                                    #? [A·t]    - MagnetoMotive Force (MMF) in the core 
+                  'CSA_gap'		   : 9.39e-5,                                                              #? [m^2]    - Air gap cross-sectional area 
+                  'Lflux_gap'		   : 0.00022,                                                              #? [V·s]    - Air gap flux linkage 
+                  'MMF_gap'		   : 0                                                                     #? [A·t]    - MagnetoMotive Force (MMF) in the air gap 
                }	
 CTRL        = {                                                                                             
-                  'Vset'    		   :  12                                                                  #? [/]      - 
+                  'Vset'    		   :  12                                                                   #? [V]      - Voltage set point for control 
                  
                }
-Cout1       = {                                                                                             
-                  'Config'		      : 1,                                                                    #? [/]      - 
-                  'Cap_s'    		   : 100e-6,                                                               #? [/]      -  
-                  'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - 
-                  'Lesl_s'	         : 1e-19,                                                                #? [/]      - 
-                  'Npara'		      : 1,                                                                    #? [/]      - 
-                  'Nseri'		      : 1,                                                                    #? [/]      - 
-                  'Vinit'		      : 0,                                                                    #? [/]      - 
-                  'Iinit'		      : 1e-3                                                                  #? [/]      - 
-               }
-Cout2       = {                                                                                             
-                  'Config'		      : 1,                                                                    #? [/]      - 
-                  'Cap_s'    		   : 100e-6,                                                               #? [/]      -  
-                  'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - 
-                  'Lesl_s'	         : 1e-19,                                                                #? [/]      - 
-                  'Npara'		      : 1,                                                                    #? [/]      - 
-                  'Nseri'		      : 1,                                                                    #? [/]      - 
-                  'Vinit'		      : 0,                                                                    #? [/]      - 
-                  'Iinit'		      : 1e-3                                                                  #? [/]      - 
+Cout        = {                                                                                             
+                  'Config'		      : 1,                                                                    #? [/]      - Configuration of the output capacitor
+                  'Cap_s'    		   : 100e-6,                                                               #? [F]      - Capacitance value  
+                  'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
+                  'Lesl_s'	         : 1e-19,                                                                #? [H]      - Equivalent series inductance of the capacitor 
+                  'Npara'		      : 1,                                                                    #? [/]      - Number of parallel capacitors
+                  'Nseri'		      : 1,                                                                    #? [/]      - Number of series capacitors
+                  'Vinit'		      : 0,                                                                    #? [V]      - Initial voltage across the capacitor 
+                  'Iinit'		      : 1e-3                                                                  #? [A]      - Initial current through the capacitor 
                }
 Load        = {                                                                                             
-                  'Config'		      : 1,                                                                    #? [/]      - 
-                  'CL'    		      : 0,                                                                    #? [/]      - 
-                  'RL'		         : 5,                                                                    #? [Ohm]    -
-                  'LL'		         : 0,                                                                    #? [/]      - 
-                  'Vinit'		      : 0,                                                                    #? [/]      - 
-                  'Iinit'		      : 0,                                                                    #? [/]      - 
-                  't_switch'        : Sim_param['tSim']-Sim_param['load_tflip'],                            #? [/]      - 
-                  't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2                         #? [/]      - 
+                  'Config'		      : 1,                                                                    #? [/]      - Load configuration
+                  'CL'    		      : 0,                                                                    #? [F]      - Load capacitance 
+                  'RL'		         : 5,                                                                    #? [Ohm]    - Load resistance 
+                  'LL'		         : 0,                                                                    #? [H]      - Load inductance 
+                  'Vinit'		      : 0,                                                                    #? [V]      - Initial voltage across the load 
+                  'Iinit'		      : 0,                                                                    #? [A]      - Initial current through the load 
+                  't_switch'        : Sim_param['tSim']-Sim_param['load_tflip'],                            #? [s]      - Load switch timing 
+                  't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2                         #? [s]      - Dead time for load switching 
                }
 RCD         = {                                                                                             
-                  'R'               : 80,                                                                   #? [Ohm]    - 
-                  'C'               : 1e-8,                                                                 #? [Ohm]    - 
-                  'diode'		      : 'file:C4D40120D',                                                     #? [/]      - diode thermal description       
-                  'ron_diode'		   : 0.6,                                                                  #? [Ohm]    - diode forward voltage    
-                  'vf_diode'		   : 0.6,                                                                  #? [V]      - diode forward voltage
-                  'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - thermal resistance case-heatsink (grease)       
-                  'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes      
-                  'rth_ch'		      : 0.1,                                                                  #? [K/W]    - Heatsink to ambient thermal resistance    
-                  't_init'		      : 25                                                                    #? [C]      - initial temperature   
+                  'R'               : 80,                                                                   #? [Ohm]    - Resistor value in the RCD snubber 
+                  'C'               : 1e-8,                                                                 #? [F]      - Capacitor value in the RCD snubber 
+                  'diode'		      : 'file:C4D40120D',                                                     #? [/]      - Diode model file path
+                  'ron_diode'		   : 0.6,                                                                  #? [Ohm]    - Diode on-state resistance 
+                  'vf_diode'		   : 0.6,                                                                  #? [V]      - Diode forward voltage 
+                  'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)       
+                  'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes
+                  'rth_ch'		      : 0.1,                                                                  #? [K/W]    - Heatsink-to-ambient thermal resistance 
+                  't_init'		      : 25                                                                    #? [°C]     - Initial temperature of the diode 
                }
 RC_snub     = {                                                                                             
-                  'Rsnub'           : 10,                                                                   #? [Ohm]    - 
+                  'Rsnub'           : 1e3,                                                                  #? [Ohm]    - Resistor value in the RC snubber
                   'Csnub'           :  {                                                                                           
-                                          'Config'		      : 2,                                            #? [/]      - 
-                                          'Cap_s'    		   : 10e-6,                                        #? [/]      - 
-                                          'Resr_s'		      : 1e-5,                                         #? [Ohm]    - 
-                                          'Lesl_s'		      : 0,                                            #? [/]      - 
-                                          'Npara'		      : 1,                                            #? [/]      - 
-                                          'Nseri'		      : 1,                                            #? [/]      - 
-                                          'Vinit'		      : 0,                                            #? [/]      - 
-                                          'Iinit'		      : 0                                             #? [/]      -       
+                                          'Config'		      : 2,                                            #? [/]      - Configuration of the snubber capacitor
+                                          'Cap_s'    		   : 1e-9,                                         #? [F]      - Snubber capacitance value 
+                                          'Resr_s'		      : 1e-5,                                         #? [Ohm]    - Equivalent series resistance of the snubber capacitor 
+                                          'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of the snubber capacitor 
+                                          'Npara'		      : 1,                                            #? [/]      - Number of parallel snubber capacitors
+                                          'Nseri'		      : 1,                                            #? [/]      - Number of series snubber capacitors
+                                          'Vinit'		      : 0,                                            #? [V]      - Initial voltage across the snubber capacitor 
+                                          'Iinit'		      : 0                                             #? [A]      - Initial current through the snubber capacitor       
                                           },    
                }
 diode       = {
-                  'diode'		         : 'file:C4D40120D',                                                  #? [/]      - diode thermal description       
-                  'ron_diode'		      : 0.04,                                                              #? [Ohm]    - diode forward voltage    
-                  'vf_diode'		      : 0.6,                                                               #? [V]      - diode forward voltage
-                  'rth_ch_diode'		   : 0.5,                                                               #? [K/W]    - thermal resistance case-heatsink (grease)       
-                  'num_par_diode'		: 1,                                                                 #? [/]      - Number of parallel diodes      
-                  'Rth'		            : 0.1,                                                               #? [K/W]    - Heatsink to ambient thermal resistance    
-                  't_init'		         : 25                                                                 #? [C]      - initial temperature   
+                  'diode'		         : 'file:C4D40120D',                                                  #? [/]      - Diode model file path       
+                  'ron_diode'		      : 0,                                                                 #? [Ohm]    - Diode on-state resistance 
+                  'vf_diode'		      : 0,                                                                 #? [V]      - Diode forward voltage 
+                  'rth_ch_diode'		   : 0.5,                                                               #? [K/W]    - Diode thermal resistance (junction-to-case)      
+                  'num_par_diode'		: 1,                                                                 #? [/]      - Number of parallel diodes
+                  'Rth'		            : 0.1,                                                               #? [K/W]    - Heatsink-to-ambient thermal resistance 
+                  't_init'		         : 25                                                                 #? [°C]     - Initial temperature of the diode 
                }
 Thermals    = {                                                                                             
-                  'T_amb'           :  25.0,                                                                #? [/]      - 
-                  'rth_Amb'         :  0.09                                                                 #? [/]      - 
+                  'T_amb'           :  25.0,                                                                #? [°C]     - Ambient temperature 
+                  'rth_Amb'         :  0.09                                                                 #? [K/W]    - Thermal resistance from case to ambient 
                }
 
 #!----------------------------------------------------------------------------------------------------------------------------------------
@@ -167,8 +155,7 @@ ModelVars   = {
                   'SW'              :  SW          ,                                                             
                   'Trafo'           :  Trafo       ,                                                                 
                   'CTRL'            :  CTRL        ,                                                            
-                  'Cout1'           :  Cout1       ,  
-                  'Cout2'           :  Cout2       ,                                                                                                                          
+                  'Cout'            :  Cout        ,  
                   'Load'            :  Load        ,                                                                
                   'RCD'             :  RCD         ,    
                   'RC_snub'         :  RC_snub     ,                                                                                                                            
@@ -181,14 +168,13 @@ scopes      =  [
 				      "flyback/Scopes/RCD",                                                                                         
 				      "flyback/Scopes/load_scope",                                                                                         
 				      "flyback/Scopes/load_scope1",                                                                                        
-				      "flyback/Scopes/BHLoop",                                                                                        
 				      "flyback/Scopes/MMF",                                                                                      
 				      "flyback/Scopes/primary",                                                                                    
 				      "flyback/Scopes/secondary1",                                                                                    
 				      "flyback/Scopes/secondary2",                                                                                    
 				      "flyback/Scopes/Mos",                                                                                  
 				      "flyback/Scopes/diodes",                                                                                
-				      "flyback/Scopes/'cout",                                                                                
+				      "flyback/Scopes/cout",                                                                                
 				      "flyback/Scopes/Power",                                                                                 
 				      "flyback/Scopes/Outputs",                                                                                
 				      "flyback/Scopes/PI"                                                                                 
@@ -269,7 +255,9 @@ Waveforms   =  [
                   'Vout',
                   'Iout',
                   'Vout2',
-                  'Iout2'
+                  'Iout2',
+                  'Total Power Loss',
+                  'Efficiency'
                ]		
 Units       =  [                                                                                            
                   '[ V ]',                  
@@ -288,9 +276,7 @@ Units       =  [
                   '[ A ]',                  
                   #!-------------------------
                   '[ V ]',                  
-                  '[ A ]',                  
-                  #!-------------------------
-                  '[ V ]',                  
+                  '[ A ]',                                  
                   #!-------------------------
                   '[A/m]',
                   '[Wb/m²]',
@@ -348,6 +334,8 @@ Units       =  [
                   '[ V ]',                  
                   '[ A ]',                  
                   '[ V ]',                  
-                  '[ A ]'                 
+                  '[ A ]',               
+                  '[ W ]',                 
+                  '[ % ]',                   
                ]
 #!----------------------------------------------------------------------------------------------------------------------------------------	

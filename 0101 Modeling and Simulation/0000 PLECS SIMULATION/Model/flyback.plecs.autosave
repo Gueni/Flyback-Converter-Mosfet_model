@@ -19,7 +19,7 @@ Plecs {
   LossVariableLimitExceededMsg "3"
   NegativeSwitchLossMsg "3"
   DivisionByZeroMsg "2"
-  StiffnessDetectionMsg "2"
+  StiffnessDetectionMsg "1"
   MaxConsecutiveZCs "Sim_param.ZeroCross"
   AlgebraicLoopWithStateMachineMsg "2"
   AssertionAction "1"
@@ -11960,6 +11960,11 @@ Plecs {
           Path          "Ideal SW"
           Signals       {"Diode voltage"}
         }
+        Probe {
+          Component     "D2"
+          Path          "Real SW"
+          Signals       {"Diode voltage"}
+        }
       }
       MaskProbe {
         Name          "Device current"
@@ -11976,6 +11981,11 @@ Plecs {
         Probe {
           Component     "D1"
           Path          "Ideal SW"
+          Signals       {"Diode current"}
+        }
+        Probe {
+          Component     "D2"
+          Path          "Real SW"
           Signals       {"Diode current"}
         }
       }
@@ -11995,6 +12005,11 @@ Plecs {
           Component     "PH"
           Path          "Ideal SW"
           Signals       {"Constant"}
+        }
+        Probe {
+          Component     "D2"
+          Path          "Real SW"
+          Signals       {"Diode junction temp"}
         }
       }
       MaskProbe {
@@ -12027,6 +12042,11 @@ Plecs {
           Path          "Ideal SW"
           Signals       {"Diode switching loss"}
         }
+        Probe {
+          Component     "D2"
+          Path          "Real SW"
+          Signals       {"Diode switching loss"}
+        }
       }
       MaskProbe {
         Name          "Device conduction loss"
@@ -12043,6 +12063,11 @@ Plecs {
         Probe {
           Component     "D1"
           Path          "Ideal SW"
+          Signals       {"Diode conduction loss"}
+        }
+        Probe {
+          Component     "D2"
+          Path          "Real SW"
           Signals       {"Diode conduction loss"}
         }
       }
@@ -12481,4 +12506,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "uzBovXoG39JraSnJbUGClj4tnZYqx83YduCVp1TcYrA="
+DemoSignature "SHsk7wPU6Gb8vRVYUwOjox5ZK7ketpDqcVtg3RXlOG0="
