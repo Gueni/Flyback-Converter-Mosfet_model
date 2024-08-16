@@ -118,7 +118,7 @@ def gen_plots(resFile, html_file, OPEN=False):
         fig.update_xaxes(title_text="Time [s]", row=i+1, col=1)
         fig.update_yaxes(title_text=mdl.Units[i], row=i+1, col=1)
     fig.update_layout(height=300*len(mdl.Waveforms))  
-    title        = f"flyback_{mdl.utc_numeric}_{mdl.sim_idx}"
+    title        = f"flyback_{mdl.utc_numeric}_{mdl.sim_idx}_MOHAMED_GUENI"
     html_content = f"""
                         <!DOCTYPE html>
                         <html lang="en">

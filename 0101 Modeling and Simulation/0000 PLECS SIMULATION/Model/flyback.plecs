@@ -11333,96 +11333,6 @@ Plecs {
       }
     }
     Component {
-      Type          PlecsProbe
-      Name          "Probe"
-      Show          on
-      Position      [350, 630]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Probe {
-        Component     "Gate"
-        Path          "CONTROLLER/Closed Loop"
-        Signals       {"Input"}
-      }
-      Probe {
-        Component     "Pri"
-        Path          ""
-        Signals       {"Winding current"}
-      }
-      Probe {
-        Component     "12V Sec"
-        Path          ""
-        Signals       {"Winding current"}
-      }
-      Probe {
-        Component     "Vds"
-        Path          "HS1/Real SW"
-        Signals       {"Measured voltage"}
-      }
-    }
-    Component {
-      Type          Scope
-      Name          "Scope"
-      Show          on
-      Position      [475, 645]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      Location      [0, 26; 1536, 827]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAeAAAAAsPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABfAP///wAAB4AAAAMVAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAB"
-"QAAAH0AAAADAAAAfQAAAAgAAAB9AAAACQAAAH0AAAAGAAAAfQAAAAcAAAB9AAAABAAAAH0AAAeAAA"
-"AACwEAAAEAAAAAAAAAAAAAAAB9/////wAAAIEAAAAAAAAACwAAANgAAAABAAAAAAAAAH0AAAABAAA"
-"AAAAAAH0AAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
-"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAABa4AAAABAAAAAAAAA+gAA"
-"AAAKw=="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-      Axes          "1"
-      TimeRange     "0.0"
-      ScrollingMode "1"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    "Time / s"
-      ShowLegend    "2"
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Fourier {
-        SingleXAxis       on
-        AxisLabel         "Frequency / Hz"
-        Scaling           0
-        PhaseDisplay      0
-        ShowFourierLegend off
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-      }
-    }
-    Component {
       Type          Reference
       SrcComponent  "library/Passives/RC Snub"
       Name          "RC Snub"
@@ -11805,14 +11715,6 @@ Plecs {
       DstTerminal   1
     }
     Connection {
-      Type          Signal
-      SrcComponent  "Probe"
-      SrcTerminal   1
-      Points        [410, 630; 410, 645]
-      DstComponent  "Scope"
-      DstTerminal   1
-    }
-    Connection {
       Type          Wire
       SrcComponent  "Isense"
       SrcTerminal   1
@@ -11848,4 +11750,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "lMrbxm450N0nU7p1s5zYxEBpB3cWhzsZ+faBZmMsRmc="
+DemoSignature "DOrgTdVCV5LGbnFX4thHR6AWOtQLN0qwvAQRAvFzsUo="
