@@ -16,13 +16,13 @@ import cleardata
 import time
 import os
 #?----------------------------------------------------------------------------------------------------------------------------------------
-port                = "1080"                                                               
-url                 = f"http://localhost:{port}/RPC2"                                      
-modelname           = "flyback" 
-mdlvar              = mdl.ModelVars
-Rsunb               = (np.arange(1    ,5    +1    ,1    )).tolist()
-Csnub               = (np.arange(3    ,8     +1     ,1     )*1e-6).tolist()
-plcsim              = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)   
+port                                          = "1080"                                                               
+url                                           = f"http://localhost:{port}/RPC2"                                      
+modelname                                     = "flyback" 
+mdlvar                                        = mdl.ModelVars
+Rsunb                                         = (np.arange(1    ,5    +1    ,1    )).tolist()
+Csnub                                         = (np.arange(3    ,8     +1     ,1     )*1e-6).tolist()
+plcsim                                        = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)   
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim.rpc_connect()                                                                    
 plcsim.load_model()
@@ -32,8 +32,8 @@ inc  = 0
 for i, item1 in enumerate(Rsunb):
     for j, item2 in enumerate(Csnub):
 
-        utc_numeric     = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
-        sim_idx         = inc+1
+        utc_numeric                            = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
+        sim_idx                                = inc+1
         mdlvar['ToFile']['sim_idx']            = sim_idx
         mdlvar['ToFile']['utc_numeric']        = utc_numeric
         mdlvar['ToFile']['ToFile_path']        = str((os.path.join(mdl.current_directory,mdl.ToFile_path+f"Results_{utc_numeric}_{sim_idx}.csv")).replace("\\", "/"))

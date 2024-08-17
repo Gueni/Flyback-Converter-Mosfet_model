@@ -21,15 +21,15 @@ from collections import OrderedDict
 #?----------------------------------------------------------------------------------------------------------------------------------------
 
 def png_to_hex_base64():
-    imghexdata      = ''
-    img_path        = (os.path.join(os.getcwd(), "0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png")).replace("\\", "/") 
-    screen = screeninfo.get_monitors()[0]
+    imghexdata                  = ''
+    img_path                    = (os.path.join(os.getcwd(), "0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png")).replace("\\", "/") 
+    screen                      = screeninfo.get_monitors()[0]
     screen_width, screen_height = screen.width, screen.height
-    target_width    = int(screen_width * 0.5)  
-    target_height   = int(screen_height * 0.4)  
+    target_width                = int(screen_width * 0.5)  
+    target_height               = int(screen_height * 0.4)  
     try:
         with Image.open(img_path) as img:
-            resized_img = img.resize((target_width, target_height), resample=Image.LANCZOS) #todo : get the size of screen and make a ratio 
+            resized_img         = img.resize((target_width, target_height), resample=Image.LANCZOS)
             resized_img.save("img.png")
         img.close()
     except IOError:
@@ -52,26 +52,25 @@ def png_to_hex_base64():
     return imghexdata
 
 def flatten_dict(d, parent_key='', sep='.'):
-    items = {}
+    items                   = {}
     for k, v in d.items():
-        new_key = f"{parent_key}{sep}{k}" if parent_key else k
+        new_key             = f"{parent_key}{sep}{k}" if parent_key else k
         if isinstance(v, dict):
             items.update(flatten_dict(v, new_key, sep=sep))
         else:
-            items[new_key] = v
+            items[new_key]  = v
     return items
 
 def extract_comments(filename):
-    prefix_list = []
-    comment_list = []
+    prefix_list                     = []
+    comment_list                    = []
 
     with open(filename, 'r') as file:
         for line in file:
-            # Look for '#?' anywhere in the line
             if '#?' in line:
-                start_index = line.index('#?')
-                prefix = line[start_index+2:start_index+2+8]
-                rest_of_comment = line[start_index+2+8:].strip()
+                start_index         = line.index('#?')
+                prefix              = line[start_index+2:start_index+2+8]
+                rest_of_comment     = line[start_index+2+8:].strip()
 
                 prefix_list.append(prefix)
                 comment_list.append(rest_of_comment)
@@ -79,10 +78,8 @@ def extract_comments(filename):
     return prefix_list, comment_list
 
 def convert_to_ordereddict(d):
-    # Base case: if d is not a dictionary, return it as is
     if not isinstance(d, dict):
         return d
-    # Recursively convert each nested dictionary to OrderedDict
     return OrderedDict((key, convert_to_ordereddict(value)) for key, value in d.items())
 
 def delete_keys_from_dict(keys_to_delete, input_dict,key2):
@@ -104,7 +101,7 @@ def gen_plots(resFile, html_file, OPEN=False):
     ToFile              = ['sim_idx','utc_numeric','ToFile_path','logfile','output_html','Traces']
     mdlvar_flat         = delete_keys_from_dict(ToFile, copy.deepcopy(mdl.ModelVars),'ToFile')
     mdlvar_flat         = flatten_dict(convert_to_ordereddict(mdlvar_flat))
-    file_path           = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  # Replace with your Python file path
+    file_path           = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  
     unit ,comments      = extract_comments(file_path)
     table_fig           = go.Figure(data=[go.Table(
         header=dict(values=["PARAMETERS", "VALUES" , "UNITS","COMMENTS"],

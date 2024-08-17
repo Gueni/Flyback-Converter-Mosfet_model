@@ -21,7 +21,6 @@ class simpy:
 
     def is_running(self,process_name):
         try:
-            # For Windows
             tasks = os.popen('tasklist').read().strip().split('\n')
             for task in tasks:
                 if process_name.lower() in task.lower():

@@ -15,18 +15,18 @@ import cleardata
 import os
 import time
 #?----------------------------------------------------------------------------------------------------------------------------------------
-port                = "1080"                                                               
-url                 = f"http://localhost:{port}/RPC2"                                      
-mdlvar              = mdl.ModelVars                                                        
-modelname           = "flyback"                                                                
+port                                   = "1080"                                                               
+url                                    = f"http://localhost:{port}/RPC2"                                      
+mdlvar                                 = mdl.ModelVars                                                        
+modelname                              = "flyback"                                                                
 #?----------------------------------------------------------------------------------------------------------------------------------------
-plcsim              = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)    
+plcsim                                 = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)    
 plcsim.rpc_connect()                                                                       
 plcsim.load_model()  
 cleardata.clear_data_folders()                                                                  
 #?----------------------------------------------------------------------------------------------------------------------------------------
-utc_numeric     = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
-sim_idx         = 1
+utc_numeric                            = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
+sim_idx                                = 1
 mdlvar['ToFile']['sim_idx']            = sim_idx
 mdlvar['ToFile']['utc_numeric']        = utc_numeric
 mdlvar['ToFile']['ToFile_path']        = str((os.path.join(mdl.current_directory,mdl.ToFile_path+f"Results_{utc_numeric}_{sim_idx}.csv")).replace("\\", "/"))
