@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 26; 1536, 780]
+    Location      [0, 23; 1536, 777]
     ZoomFactor    0.999995
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -913,7 +913,7 @@ Plecs {
       Type          Subsystem
       Name          "Scopes"
       Show          on
-      Position      [975, 235]
+      Position      [975, 225]
       Direction     up
       Flipped       off
       LabelPosition none
@@ -1235,8 +1235,8 @@ Plecs {
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAAAwAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAA"
-"AJAAAAZAAAAAgAAABkAAAA5gAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAC"
+"AAABAAAAGQAAAAFAAAAZAAAAAYAAABkAAAABwAAAGQAAAAIAAAAZAAAAAkAAABkAAAAAQAAAGQAAA"
+"ACAAAAZAAAAAMAAABkAAAA5gAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAC"
 "7AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAArAAAAAQAAAAAAAAPoAAAAACs="
@@ -1319,7 +1319,7 @@ Plecs {
               AutoScale     1
               MinValue      0
               MaxValue      1
-              Signals       {"Total Output Power"}
+              Signals       {}
               Untangle      0
               KeepBaseline  off
               BaselineValue 0
@@ -4105,7 +4105,7 @@ Plecs {
       Type          Goto
       Name          "Goto"
       Show          off
-      Position      [1070, 290]
+      Position      [1070, 280]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -9469,7 +9469,7 @@ Plecs {
       Type          ConfigurableSubsystem
       Name          "CONTROLLER"
       Show          on
-      Position      [975, 290]
+      Position      [975, 280]
       Direction     up
       Flipped       off
       LabelPosition none
@@ -12478,89 +12478,6 @@ Plecs {
         Show          off
       }
     }
-    Component {
-      Type          Scope
-      Name          "Scope"
-      Show          on
-      Position      [930, 435]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      Location      [0, 26; 1536, 807]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAAG4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAB4AAAAOxAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"wAAAH0AAAACAAAAfQAAAAEAAAB9AAAABwAAAH0AAAAGAAAAfQAAAAUAAAB9AAAABAAAAH0AAAAJAA"
-"AAfQAAAAgAAAB9AAAA+QAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADOAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AArAAAAAQAAAAAAAAPoAAAAACs="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-      Axes          "2"
-      TimeRange     "0"
-      ScrollingMode "1"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    "Time / s"
-      ShowLegend    "1"
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Fourier {
-        SingleXAxis       on
-        AxisLabel         "Frequency / Hz"
-        Scaling           0
-        PhaseDisplay      0
-        ShowFourierLegend off
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-      }
-    }
     Connection {
       Type          Signal
       SrcComponent  "Clock"
@@ -12937,31 +12854,15 @@ Plecs {
       Type          Signal
       SrcComponent  "+5"
       SrcTerminal   3
-      Points        [825, 295]
-      Branch {
-        DstComponent  "Goto8"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [825, 440]
-        DstComponent  "Scope"
-        DstTerminal   2
-      }
+      DstComponent  "Goto8"
+      DstTerminal   1
     }
     Connection {
       Type          Signal
       SrcComponent  "+12"
       SrcTerminal   3
-      Points        [820, 165]
-      Branch {
-        DstComponent  "Goto6"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [820, 430]
-        DstComponent  "Scope"
-        DstTerminal   1
-      }
+      DstComponent  "Goto6"
+      DstTerminal   1
     }
     Annotation {
       Name          "<html><body>\n<p><span style=\" font-size:xx-large; font-"
@@ -12984,4 +12885,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "dx3ABnhiLek+8NnHYpd43pNW/z0RkH9SAwYLBJSqNB0="
+DemoSignature "sb0TvNjIaHVas1VRB5ebvtHLY1qgxzVJfqB2ygd5O5o="
