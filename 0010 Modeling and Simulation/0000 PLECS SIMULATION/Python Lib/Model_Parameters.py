@@ -35,13 +35,13 @@ SW          = {
                   'therm_mosfet'    : 'file:C3M0021120K',                                                   #? [/]      - MOSFET thermal model file path
                   'Rgon'            : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-on 
                   'Rgoff'           : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-off
-                  'ron_mosfet'      : 0.04,                                                                 #? [Ohm]    - MOSFET on-state resistance 
+                  'ron_mosfet'      : 0.004,                                                                #? [Ohm]    - MOSFET on-state resistance 
                   'Iinit'           : 0,                                                                    #? [A]      - Initial current through the MOSFET 
                   'Coss'            :  {                                                                                           
                                           'Config'		      : 5,                                            #? [/]      - Capacitance configuration
                                           'Cap_s'    		   : 1e-12,                                        #? [F]      - Capacitance value 
-                                          'Resr_s'		      : 0,                                            #? [F]      - Equivalent series resistance of the capacitance
-                                          'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of the capacitance
+                                          'Resr_s'		      : 1e-12,                                        #? [F]      - Equivalent series resistance of the capacitance
+                                          'Lesl_s'		      : 1e-12,                                        #? [H]      - Equivalent series inductance of the capacitance
                                           'Npara'		      : 1,                                            #? [/]      - Number of parallel capacitors
                                           'Nseri'		      : 1,                                            #? [/]      - Number of series capacitors
                                           'Vinit'		      : 0,                                            #? [V]      - Initial voltage across the capacitance
@@ -77,7 +77,7 @@ Trafo       = {
                }	
 
 Cout        = {                                                                                             
-                  'Config'		      : 1,                                                                    #? [/]      - Configuration of the output capacitor
+                  'Config'		      : 4,                                                                    #? [/]      - Configuration of the output capacitor
                   'Cap_s'    		   : 220e-6,                                                               #? [F]      - Capacitance value  
                   'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
                   'Lesl_s'	         : 1e-19,                                                                #? [H]      - Equivalent series inductance of the capacitor 
@@ -106,9 +106,9 @@ CTRL        = {
                }
 RCD         = {                                                                                             
                   'R'               : 1e5,                                                                  #? [Ohm]    - Resistor value in the RCD snubber 
-                  'C'               : 1e-6,                                                                 #? [F]      - Capacitor value in the RCD snubber 
+                  'C'               : 10e-6,                                                                #? [F]      - Capacitor value in the RCD snubber 
                   'diode'		      : 'file:C4D40120D',                                                     #? [/]      - Diode model file path
-                  'ron_diode'		   : 0.6,                                                                  #? [Ohm]    - Diode on-state resistance 
+                  'ron_diode'		   : 0.4,                                                                  #? [Ohm]    - Diode on-state resistance 
                   'vf_diode'		   : 0.6,                                                                  #? [V]      - Diode forward voltage 
                   'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)       
                   'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes
@@ -116,10 +116,10 @@ RCD         = {
                   't_init'		      : 25                                                                    #? [°C]     - Initial temperature of the diode 
                }
 RC_snub     = {                                                                                             
-                  'Rsnub'           : 10  ,                                                                  #? [Ohm]    - Resistor value in the RC snubber
+                  'Rsnub'           : 100  ,                                                                #? [Ohm]    - Resistor value in the RC snubber
                   'Csnub'           :  {                                                                                           
                                           'Config'		      : 2,                                            #? [/]      - Configuration of the snubber capacitor
-                                          'Cap_s'    		   : 8e-06,                                        #? [F]      - Snubber capacitance value 
+                                          'Cap_s'    		   : 1e-6,                                         #? [F]      - Snubber capacitance value 
                                           'Resr_s'		      : 1e-5,                                         #? [Ohm]    - Equivalent series resistance of Csnub 
                                           'Lesl_s'		      : 0,                                            #? [H]      - Equivalent series inductance of Csnub 
                                           'Npara'		      : 1,                                            #? [/]      - Number of parallel snubber capacitors
@@ -130,7 +130,7 @@ RC_snub     = {
                }
 diode       = {
                   'diode'		         : 'file:C4D40120D',                                                  #? [/]      - Diode model file path       
-                  'ron_diode'		      : 0.04,                                                              #? [Ohm]    - Diode on-state resistance 
+                  'ron_diode'		      : 0.4,                                                               #? [Ohm]    - Diode on-state resistance 
                   'vf_diode'		      : 0.6,                                                               #? [V]      - Diode forward voltage 
                   'rth_ch_diode'		   : 0.5,                                                               #? [K/W]    - Diode thermal resistance (junction-to-case)      
                   'num_par_diode'		: 1,                                                                 #? [/]      - Number of parallel diodes
