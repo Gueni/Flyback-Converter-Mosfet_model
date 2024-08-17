@@ -12,19 +12,19 @@ import os
 import time 
 #!----------------------------------------------------------------------------------------------------------------------------------------                                                         
 current_directory   = os.getcwd()                                                                                                                                                              
-Traces_path         = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Traces/"           
-ToFile_path         = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/CSV/"              
-logfile_path        = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Log/"              
-output_html_path    = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/html/"             
-model_path          = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/flyback.plecs"                  
+Traces_path         = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Traces/"           
+ToFile_path         = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/CSV/"              
+logfile_path        = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Log/"              
+output_html_path    = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/html/"             
+model_path          = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/flyback.plecs"                  
 model_directory     = (os.path.join(current_directory, model_path)).replace("\\", "/")                                        
 #!----------------------------------------------------------------------------------------------------------------------------------------
 Sim_param 	= {                                                                                            
-                  'tSim'	    	   : 0.01,                                                                 #? [s]     - Total simulation time
-                  'load_tflip'	   : 0.01*   0.5,                                                          #? [s]     - Time at which the load changes state 
+                  'tSim'	    	   : 0.05,                                                                 #? [s]     - Total simulation time
+                  'load_tflip'	   : 0.05*   0.5,                                                          #? [s]     - Time at which the load changes state 
                   'maxStep'		   : 1e-3,                                                                 #? [s]     - Maximum simulation time step
                   'ZeroCross'       : 1000,                                                                 #? [/]     - Zero-crossing detection limit
-                  'rel_tol'		   : 1e-7                                                                 #? [/]     - Relative tolerance for the numerical solver
+                  'rel_tol'		   : 1e-7                                                                  #? [/]     - Relative tolerance for the numerical solver
                }
 ToFile      = {   
                   'Ts'              : 10e-6,                                                                #? [s]     - Sampling time for saving data
@@ -75,10 +75,7 @@ Trafo       = {
                   'Lflux_gap'		   : 0.00022,                                                              #? [V·s]    - Air gap flux linkage 
                   'MMF_gap'		   : 0                                                                     #? [A·t]    - MagnetoMotive Force (MMF) in the air gap 
                }	
-CTRL        = {                                                                                             
-                  'Vset'    		   :  12                                                                   #? [V]      - Voltage set point for control 
-                 
-               }
+
 Cout        = {                                                                                             
                   'Config'		      : 1,                                                                    #? [/]      - Configuration of the output capacitor
                   'Cap_s'    		   : 220e-6,                                                               #? [F]      - Capacitance value  
@@ -97,7 +94,14 @@ Load        = {
                   'Vinit'		      : 0,                                                                    #? [V]      - Initial voltage across the load 
                   'Iinit'		      : 0,                                                                    #? [A]      - Initial current through the load 
                   't_switch'        : Sim_param['tSim']-Sim_param['load_tflip'],                            #? [s]      - Load switch timing 
-                  't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2                         #? [s]      - Dead time for load switching 
+                  't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2,                        #? [s]      - Dead time for load switching 
+                  'Pout'		      : 30,                                                                   #? [W]      - Desireed output power
+                  'Vout1'		      : 12,                                                                   #? [V]      - Desiered output voltage 
+                  'Vout2'		      : 5                                                                     #? [V]      - Desiered output voltage 
+               }
+CTRL        = {                                                                                             
+                  'Vset'    		   :  Load['Vout1']                                                        #? [V]      - Voltage set point for control 
+                 
                }
 RCD         = {                                                                                             
                   'R'               : 1e5,                                                                  #? [Ohm]    - Resistor value in the RCD snubber 

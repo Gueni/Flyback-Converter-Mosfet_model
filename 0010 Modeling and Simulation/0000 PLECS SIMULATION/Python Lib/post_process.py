@@ -22,7 +22,7 @@ from collections import OrderedDict
 
 def png_to_hex_base64():
     imghexdata      = ''
-    img_path        = (os.path.join(os.getcwd(), "0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png")).replace("\\", "/") 
+    img_path        = (os.path.join(os.getcwd(), "0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png")).replace("\\", "/") 
     screen = screeninfo.get_monitors()[0]
     screen_width, screen_height = screen.width, screen.height
     target_width    = int(screen_width * 0.5)  
@@ -97,14 +97,14 @@ def gen_plots(resFile, html_file, OPEN=False):
         fig.add_trace(go.Scatter(x=df.iloc[:,0], y=df.iloc[:,i], mode='lines', name=mdl.Waveforms[i-1]), row=i, col=1)
     fig.update_layout   (
         plot_bgcolor='#e9f5f9',
-        title_text      =   "flyback WAVEFORMES",
+        title_text      =   "FLYBACK CONVERTER WAVEFORMES",
         showlegend      =   False,
         title           =   dict(font    =  dict(family  ="Arial", size=30 ))
                         )
     ToFile              = ['sim_idx','utc_numeric','ToFile_path','logfile','output_html','Traces']
     mdlvar_flat         = delete_keys_from_dict(ToFile, copy.deepcopy(mdl.ModelVars),'ToFile')
     mdlvar_flat         = flatten_dict(convert_to_ordereddict(mdlvar_flat))
-    file_path           = "0101 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  # Replace with your Python file path
+    file_path           = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/Model_Parameters.py"  # Replace with your Python file path
     unit ,comments      = extract_comments(file_path)
     table_fig           = go.Figure(data=[go.Table(
         header=dict(values=["PARAMETERS", "VALUES" , "UNITS","COMMENTS"],
