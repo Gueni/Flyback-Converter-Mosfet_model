@@ -9,7 +9,7 @@
 # Flyback Converter (MOSFET Model Testing)
 ## Overview
 <p align="center">
-  <img  src="0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png">
 </p>
 
 This repository contains the design and implementation of a flyback converter.The purpose of this mini project is to model and simulate a real MOSFET model for more complex projects. 
@@ -25,13 +25,13 @@ This repository contains the design and implementation of a flyback converter.Th
 Modeling and simulation involve using software tools to analyze and optimize the performance of the Flyback Converter.
 
 <p align="center">
-  <img  src="0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/report.gif">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/report.gif">
 </p>
 
 Spice Model :
 
 <p align="center">
-  <img  src="0101 Modeling and Simulation/0001 LT SPICE SIMULATION/Screenshot (123).png">
+  <img  src="0010 Modeling and Simulation/0001 LT SPICE SIMULATION/Screenshot (123).png">
 </p>
 
 ## Schematic Capture
