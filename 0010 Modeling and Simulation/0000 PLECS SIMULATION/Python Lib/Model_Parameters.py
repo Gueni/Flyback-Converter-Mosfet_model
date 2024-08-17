@@ -101,7 +101,7 @@ Load        = {
                }
 CTRL        = {                                                                                             
                   'Vset'    		   :  Load['Vout1'] ,                                                      #? [V]      - Voltage set point for control 
-                  'Fs'    		      :  250e3                                                                #? [Hz]     - Switching Frequency
+                  'Fs'    		      :  100e3                                                                #? [Hz]     - Switching Frequency
 
                }
 RCD         = {                                                                                             
