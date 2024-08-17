@@ -20,8 +20,9 @@ port                                          = "1080"
 url                                           = f"http://localhost:{port}/RPC2"                                      
 modelname                                     = "flyback" 
 mdlvar                                        = mdl.ModelVars
-Rsunb                                         = (np.arange(1    ,5    +1    ,1    )).tolist()
-Csnub                                         = (np.arange(3    ,8     +1     ,1     )*1e-6).tolist()
+# Rsunb                                         = (np.arange(1    ,5    +1    ,1    )).tolist()
+# Csnub                                         = (np.arange(3    ,8     +1     ,1     )*1e-6).tolist()
+Fs                                            = (np.arange(1    ,500     +50     ,50     )*1e3).tolist()
 plcsim                                        = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)   
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim.rpc_connect()                                                                    
@@ -29,8 +30,8 @@ plcsim.load_model()
 plcsim.ClearAllTraces(mdl.scopes)
 cleardata.clear_data_folders()                                                                  
 inc  = 0
-for i, item1 in enumerate(Rsunb):
-    for j, item2 in enumerate(Csnub):
+for i, item1 in enumerate(Fs):
+    # for j, item2 in enumerate(Csnub):
 
         utc_numeric                            = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
         sim_idx                                = inc+1
@@ -40,8 +41,9 @@ for i, item1 in enumerate(Rsunb):
         mdlvar['ToFile']['logfile']            = str((os.path.join(mdl.current_directory,mdl.logfile_path+f"Log_{utc_numeric}_{sim_idx}.log")).replace("\\", "/"))
         mdlvar['ToFile']['output_html']        = str((os.path.join(mdl.current_directory,mdl.output_html_path+f"Html_{utc_numeric}_{sim_idx}.html")).replace("\\", "/"))
         mdlvar['ToFile']['Traces']             = str((os.path.join(mdl.current_directory,mdl.Traces_path)).replace("\\", "/"))
-        mdlvar['RC_snub']['Rsnub']             = Rsunb[i]
-        mdlvar['RC_snub']['Csnub']['Cap_s']    = Csnub[j]
+        # mdlvar['RC_snub']['Rsnub']             = Rsunb[i]
+        # mdlvar['RC_snub']['Csnub']['Cap_s']    = Csnub[j]
+        mdlvar['CTRL']['Fs']                   = Fs[i]
 
         plcsim.logParams(mdlvar['ToFile']['logfile'],mdlvar)
         plcsim.Set_sim_param(mdlvar)

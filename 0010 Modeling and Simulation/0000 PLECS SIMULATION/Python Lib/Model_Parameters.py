@@ -100,8 +100,9 @@ Load        = {
                   'Vout2'		      : 5                                                                     #? [V]      - Desiered output voltage 
                }
 CTRL        = {                                                                                             
-                  'Vset'    		   :  Load['Vout1']                                                        #? [V]      - Voltage set point for control 
-                 
+                  'Vset'    		   :  Load['Vout1'] ,                                                      #? [V]      - Voltage set point for control 
+                  'Fs'    		      :  250e3                                                                #? [Hz]     - Switching Frequency
+
                }
 RCD         = {                                                                                             
                   'R'               : 1e5,                                                                  #? [Ohm]    - Resistor value in the RCD snubber 
@@ -169,7 +170,11 @@ scopes      =  [
 				      "flyback/Scopes/diodes",                                                                                
 				      "flyback/Scopes/cout",                                                                                
 				      "flyback/Scopes/Power",                                                                                 
-				      "flyback/Scopes/Outputs",                                                                                
+				      "flyback/Scopes/Outputs", 
+				      "flyback/Scopes/PVP",                                                                                
+				      "flyback/Scopes/EFF",                                                                                
+				      "flyback/Scopes/CCM",   
+				      "flyback/Scopes/SHUNT",                                                                                                                                                             
 				      "flyback/Scopes/PI"                                                                                 
                ]	
 Waveforms   =  [                                                                                            
@@ -252,7 +257,10 @@ Waveforms   =  [
                   'Total Power Loss',
                   'Input Power',
                   'Output Power',
-                  'Efficiency'
+                  'Efficiency',
+                  'SHUNT Voltage',                  
+                  'SHUNT Current',
+                  'SHUNT Dissipation'
                ]		
 Units       =  [                                                                                            
                   '[ V ]',                  
@@ -333,6 +341,9 @@ Units       =  [
                   '[ W ]',   
                   '[ W ]', 
                   '[ W ]',               
-                  '[ % ]',                   
+                  '[ % ]', 
+                  '[ V ]',                  
+                  '[ A ]',                  
+                  '[ W ]'                  
                ]
 #!----------------------------------------------------------------------------------------------------------------------------------------	
