@@ -28,6 +28,12 @@ Modeling and simulation involve using software tools to analyze and optimize the
   <img  src="0101 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/report.gif">
 </p>
 
+Spice Model :
+
+<p align="center">
+  <img  src="0101 Modeling and Simulation/0001 LT SPICE SIMULATION/Screenshot (123).png">
+</p>
+
 ## Schematic Capture
 
 Schematic capture involves creating the electrical schematics of the Flyback Converter.
