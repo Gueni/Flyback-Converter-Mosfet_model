@@ -9,7 +9,9 @@
 # Flyback Converter (MOSFET Model Testing)
 ## Overview
 
-
+<p align="center">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback.png">
+</p>
 
 This repository contains the design and implementation of a flyback converter.The purpose of this mini project is to model and simulate a real MOSFET model for more complex projects. 
 
