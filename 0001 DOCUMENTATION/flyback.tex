@@ -6,7 +6,7 @@
 %-------------------------------------------------------
 \begin{document}
 %-------------------------------------------------------
-\title{Dual Output Flyback Converter Design and Analysis}
+\title{Flyback Converter Design and Analysis}
 \author{Mohamed Gueni}
 \date{\today}
 %-------------------------------------------------------
@@ -16,7 +16,7 @@
 %-------------------------------------------------------
 
 \section{Introduction}
-A flyback converter is a type of DC-DC converter that is widely used in applications requiring multiple output voltages and galvanic isolation between input and outputs. This document details the design of a dual-output flyback converter with a 25V DC input and 12V DC, 5V DC outputs. The converter includes an RC snubber and an RCD clamp to handle switching transients and protect the components.
+A flyback converter is a type of DC-DC converter widely used in applications requiring a single output voltage and galvanic isolation between input and output. This document details the design of a single-output flyback converter with a 25V DC input and a 12V DC output. The converter includes an RC snubber and an RCD clamp to handle switching transients and protect the components.
 
 \section{System Diagram}
 %-------------------------------------------------------
@@ -35,26 +35,22 @@ The flyback converter operates by storing energy in a transformer during the swi
 The transformer in a flyback converter serves two primary purposes:
 \begin{itemize}
     \item **Energy Storage and Transfer**: During the switch-on period, energy is stored in the transformer's magnetic field. During the switch-off period, this energy is transferred to the output.
-    \item **Voltage Transformation and Isolation**: The transformer steps down the input voltage to the required output levels and provides galvanic isolation between the input and the outputs.
+    \item **Voltage Transformation and Isolation**: The transformer steps down the input voltage to the required output level and provides galvanic isolation between the input and the output.
 \end{itemize}
 
 \subsubsection{Turns Ratio Calculation}
 The turns ratio is calculated to meet the output voltage requirements based on the input voltage and the desired duty cycle.
 
 \[
-\frac{N_{pri}}{N_{sec1}} = \frac{V_{out1} + V_{f1}}{V_{in} \times D_{max}}
-\]
-
-\[
-\frac{N_{pri}}{N_{sec2}} = \frac{V_{out2} + V_{f2}}{V_{in} \times D_{max}}
+\frac{N_{pri}}{N_{sec}} = \frac{V_{out} + V_{f}}{V_{in} \times D_{max}}
 \]
 
 Where:
 \begin{itemize}
     \item $N_{pri}$ is the number of turns on the primary winding.
-    \item $N_{sec1}$, $N_{sec2}$ are the number of turns on the secondary windings for the 12V and 5V outputs, respectively.
-    \item $V_{f1}$, $V_{f2}$ are the forward voltage drops of the diodes.
-    \item $D_{max}$ is the maximum duty cycle, which is typically 0.4 to 0.6 for flyback converters.
+    \item $N_{sec}$ is the number of turns on the secondary winding.
+    \item $V_{f}$ is the forward voltage drop of the diode.
+    \item $D_{max}$ is the maximum duty cycle, typically 0.4 to 0.6 for flyback converters.
 \end{itemize}
 
 \subsubsection{Primary Inductance}
@@ -83,10 +79,10 @@ Where:
 \end{itemize}
 
 \subsection{Output Rectification and Filtering}
-The output rectification and filtering stages convert the AC voltage from the transformer’s secondary windings into DC voltage and reduce voltage ripple.
+The output rectification and filtering stages convert the AC voltage from the transformer's secondary winding into DC voltage and reduce voltage ripple.
 
-\subsubsection{Output Diodes}
-The diodes rectify the AC voltage from the transformer into DC. They must be selected based on their peak reverse voltage and average forward current ratings.
+\subsubsection{Output Diode}
+The diode rectifies the AC voltage from the transformer into DC. It must be selected based on its peak reverse voltage and average forward current ratings.
 
 \[
 V_{R, peak} = V_{in} + V_{out} \times \frac{N_{pri}}{N_{sec}}
@@ -102,21 +98,17 @@ Where:
     \item $I_{avg}$ is the average current the diode must carry.
 \end{itemize}
 
-\subsubsection{Output Capacitors}
-The capacitors filter the rectified voltage to reduce ripple and provide a stable DC output.
+\subsubsection{Output Capacitor}
+The capacitor filters the rectified voltage to reduce ripple and provide a stable DC output.
 
 \[
-C_{out1} = \frac{I_{out1} \times D_{max}}{f_s \times \Delta V_{out1}}
-\]
-
-\[
-C_{out2} = \frac{I_{out2} \times D_{max}}{f_s \times \Delta V_{out2}}
+C_{out} = \frac{I_{out} \times D_{max}}{f_s \times \Delta V_{out}}
 \]
 
 Where:
 \begin{itemize}
-    \item $I_{out1}$ and $I_{out2}$ are the output currents for the 12V and 5V outputs.
-    \item $\Delta V_{out1}$ and $\Delta V_{out2}$ are the allowable ripple voltages.
+    \item $I_{out}$ is the output current.
+    \item $\Delta V_{out}$ is the allowable ripple voltage.
 \end{itemize}
 
 \subsection{RC Snubber Circuit}
@@ -170,14 +162,13 @@ Where:
 The flyback converter operates in two main phases:
 \begin{enumerate}
     \item **Switch-On (Energy Storage)**: When the MOSFET switch is on, current flows through the primary winding of the transformer, storing energy in the magnetic field.
-    \item **Switch-Off (Energy Transfer)**: When the MOSFET switch is off, the energy stored in the magnetic field is transferred to the secondary windings, where it is rectified and filtered to produce the desired DC outputs.
+    \item **Switch-Off (Energy Transfer)**: When the MOSFET switch is off, the energy stored in the magnetic field is transferred to the secondary winding, where it is rectified and filtered to produce the desired DC output.
 \end{enumerate}
 
 \section{References}
 
 \begin{enumerate}
     \item R. W. Erickson, \textit{Fundamentals of Power Electronics}, New York: Chapman \& Hall, 1997.
-   
 \end{enumerate}
 
 \section{Units}

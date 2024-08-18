@@ -64,7 +64,6 @@ Trafo       = {
                   'MMF_leak'        : 0,                                                                    #? [A·t]    - MagnetoMotive Force (MMF) leakage 
                   'NP'              : 13,                                                                   #? [/]      - Number of primary turns
                   'NS'              : 7,                                                                    #? [/]      - Number of secondary turns
-                  'NS2'             : 3,                                                                    #? [/]      - Number of secondary turns for the second winding
                   'CSA_core'		   : 9.39e-5,                                                              #? [m^2]    - Core cross-sectional area 
                   'Lflux_core'		: 0.0376,                                                               #? [V·s]    - Core flux linkage 
                   'rel_per_core'		: 9550,                                                                 #? [V]      - Relative permeability of the core material
@@ -96,8 +95,7 @@ Load        = {
                   't_switch'        : Sim_param['tSim']-Sim_param['load_tflip'],                            #? [s]      - Load switch timing 
                   't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2,                        #? [s]      - Dead time for load switching 
                   'Pout'		      : 30,                                                                   #? [W]      - Desireed output power
-                  'Vout1'		      : 12,                                                                   #? [V]      - Desiered output voltage 
-                  'Vout2'		      : 5                                                                     #? [V]      - Desiered output voltage 
+                  'Vout1'		      : 12                                                                   #? [V]      - Desiered output voltage 
                }
 CTRL        = {                                                                                             
                   'Vset'    		   :  Load['Vout1'] ,                                                      #? [V]      - Voltage set point for control 
@@ -116,7 +114,7 @@ RCD         = {
                   't_init'		      : 25                                                                    #? [°C]     - Initial temperature of the diode 
                }
 RC_snub     = {                                                                                             
-                  'Rsnub'           : 100  ,                                                                #? [Ohm]    - Resistor value in the RC snubber
+                  'Rsnub'           : 10e3  ,                                                               #? [Ohm]    - Resistor value in the RC snubber
                   'Csnub'           :  {                                                                                           
                                           'Config'		      : 2,                                            #? [/]      - Configuration of the snubber capacitor
                                           'Cap_s'    		   : 1e-6,                                         #? [F]      - Snubber capacitance value 
@@ -130,8 +128,8 @@ RC_snub     = {
                }
 diode       = {
                   'diode'		         : 'file:C4D40120D',                                                  #? [/]      - Diode model file path       
-                  'ron_diode'		      : 0.4,                                                               #? [Ohm]    - Diode on-state resistance 
-                  'vf_diode'		      : 0.6,                                                               #? [V]      - Diode forward voltage 
+                  'ron_diode'		      : 0.04,                                                              #? [Ohm]    - Diode on-state resistance 
+                  'vf_diode'		      : 0.4,                                                               #? [V]      - Diode forward voltage 
                   'rth_ch_diode'		   : 0.5,                                                               #? [K/W]    - Diode thermal resistance (junction-to-case)      
                   'num_par_diode'		: 1,                                                                 #? [/]      - Number of parallel diodes
                   'Rth'		            : 0.1,                                                               #? [K/W]    - Heatsink-to-ambient thermal resistance 
@@ -161,11 +159,9 @@ scopes      =  [
 				      "flyback/Scopes/input",                                                                 
 				      "flyback/Scopes/RCD",                                                                                         
 				      "flyback/Scopes/load_scope",                                                                                         
-				      "flyback/Scopes/load_scope1",                                                                                        
 				      "flyback/Scopes/MMF",                                                                                      
 				      "flyback/Scopes/primary",                                                                                    
-				      "flyback/Scopes/secondary1",                                                                                    
-				      "flyback/Scopes/secondary2",                                                                                    
+				      "flyback/Scopes/secondary",                                                                                    
 				      "flyback/Scopes/Mos",                                                                                  
 				      "flyback/Scopes/diodes",                                                                                
 				      "flyback/Scopes/cout",                                                                                
@@ -191,10 +187,7 @@ Waveforms   =  [
                   'RCD Clamp Dissipation',
                   #!-------------------------
                   'Load1 Voltage',
-                  'Load1 Current',
-                  #!-------------------------
-                  'Load2 Voltage',
-                  'Load2 Current',
+                  'Load1 Current', 
                   #!-------------------------
                   'Core Field Strength',
                   'Core Flux Density',
@@ -209,9 +202,7 @@ Waveforms   =  [
                   'Primary Winding voltage',
                   'Primary Winding Current',
                   'Secondary1 Winding voltage',
-                  'Secondary1 Winding Current',
-                  'Secondary2 Winding voltage',
-                  'Secondary2 Winding Current',
+                  'Secondary1 Winding Current', 
                   #!-------------------------
                   'MOSFET voltage',
                   'BD voltage',
@@ -225,35 +216,19 @@ Waveforms   =  [
                   'MOSFET conduction losses',
                   'BD conduction losses',
                   #!-------------------------
-                  'Diode1 voltage',
-                  'Diode1 Current',
-                  'Diode1 junction Temp',
-                  'Diode1 case Temp',
-                  'Diode1 switching losses',
-                  'Diode1 Diode LS1 junction Temp',
-                  'Diode1 conduction losses',
-
-                  'Diode2 voltage',
-                  'Diode2 Current',
-                  'Diode2 junction Temp',
-                  'Diode2 case Temp',
-                  'Diode2 switching losses',
-                  'Diode2 Diode LS1 junction Temp',
-                  'Diode2 conduction losses',
+                  'Diode voltage',
+                  'Diode Current',
+                  'Diode junction Temp',
+                  'Diode conduction losses',
+                  'Diode switching losses',
                   #!-------------------------
-                  'Cout1 Voltage',                  
-                  'Cout1 Current',
-                  'Cout1 Dissipation',
-                  #!-------------------------
-                  'Cout2 Voltage',                  
-                  'Cout2 Current',
-                  'Cout2 Dissipation',
+                  'Cout Voltage',                  
+                  'Cout Current',
+                  'Cout Dissipation',
                   #!-------------------------                 
                   'Power',
                   'Vout',
                   'Iout',
-                  'Vout2',
-                  'Iout2',
                   'Total Power Loss',
                   'Input Power',
                   'Output Power',
@@ -278,9 +253,6 @@ Units       =  [
                   '[ V ]',                  
                   '[ A ]',                  
                   #!-------------------------
-                  '[ V ]',                  
-                  '[ A ]',                                  
-                  #!-------------------------
                   '[A/m]',
                   '[Wb/m²]',
                   '[A/m]',
@@ -295,8 +267,6 @@ Units       =  [
                   '[ A ]',                  
                   '[ V ]',                  
                   '[ A ]',                  
-                  '[ V ]',                  
-                  '[ A ]',                  
                   #!-------------------------
                   '[ V ]',                  
                   '[ V ]',                  
@@ -316,17 +286,6 @@ Units       =  [
                   '[ C ]',                  
                   '[ W ]',                  
                   '[ C ]',                  
-                  '[ W ]',                  
-                  '[ V ]',                  
-                  '[ A ]',                  
-                  '[ C ]',                  
-                  '[ C ]',                  
-                  '[ W ]',                  
-                  '[ C ]',                  
-                  '[ W ]',                  
-                  #!-------------------------
-                  '[ V ]',                  
-                  '[ A ]',                  
                   '[ W ]',                  
                   #!-------------------------
                   '[ V ]',                  
@@ -336,8 +295,6 @@ Units       =  [
                   '[ W ]',                  
                   '[ V ]',                  
                   '[ A ]',                  
-                  '[ V ]',                  
-                  '[ A ]',               
                   '[ W ]',   
                   '[ W ]', 
                   '[ W ]',               
