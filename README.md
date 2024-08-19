@@ -47,6 +47,14 @@ Schematic capture involves creating the electrical schematics of the Flyback Con
 
 The PCB design encompasses the layout and design of the printed circuit board for the Flyback Converter.
 
+<p align="center">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/pcb.png">
+</p>
+
+<p align="center">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/pcb2.png">
+</p>
+
 ## How to Use
 
 To use the Flyback Converter (MOSFET Model Testing), follow these steps:
