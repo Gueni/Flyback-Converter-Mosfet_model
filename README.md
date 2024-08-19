@@ -39,6 +39,10 @@ Spice Model :
 
 Schematic capture involves creating the electrical schematics of the Flyback Converter.
 
+<p align="center">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/flyback_schematic.png">
+</p>
+
 ## PCB Design
 
 The PCB design encompasses the layout and design of the printed circuit board for the Flyback Converter.
