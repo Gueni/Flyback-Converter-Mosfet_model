@@ -48,11 +48,11 @@ Schematic capture involves creating the electrical schematics of the Flyback Con
 The PCB design encompasses the layout and design of the printed circuit board for the Flyback Converter.
 
 <p align="center">
-  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/pcb.png">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/PCB.png">
 </p>
 
 <p align="center">
-  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/pcb2.png">
+  <img  src="0010 Modeling and Simulation/0000 PLECS SIMULATION/Model/png/PCB2.png">
 </p>
 
 ## How to Use
