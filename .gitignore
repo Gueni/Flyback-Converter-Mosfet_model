@@ -156,5 +156,10 @@ cython_debug/
 *.log
 test.py
 *.raw
-/Flyback-Converter-Mosfet_model/flyback/History
+/Flyback-Converter-Mosfet_model/flyback/History/
 *.Zip
+/History
+/Flyback-Converter-Mosfet_model/0011 Schematic Capture/__Previews
+/__Previews
+
+
