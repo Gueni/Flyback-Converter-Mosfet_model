@@ -158,12 +158,54 @@ Where:
     \item $\Delta V_{clamp}$ is the allowable voltage ripple on the clamp capacitor.
 \end{itemize}
 
-\section{Flyback Converter Operation}
-The flyback converter operates in two main phases:
-\begin{enumerate}
-    \item **Switch-On (Energy Storage)**: When the MOSFET switch is on, current flows through the primary winding of the transformer, storing energy in the magnetic field.
-    \item **Switch-Off (Energy Transfer)**: When the MOSFET switch is off, the energy stored in the magnetic field is transferred to the secondary winding, where it is rectified and filtered to produce the desired DC output.
-\end{enumerate}
+
+\section*{Reverse Polarity Protection}
+%-------------------------------------------------------
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{RVP.png}
+    \caption{Reverse Polarity Protection}
+    \label{fig:RVP}
+\end{figure}
+%-------------------------------------------------------
+When the input is connected correctly (positive to the source of the PMOS and negative to the drain), the PMOS will be in the ON state, allowing current to flow. If the polarity is reversed, the PMOS remains OFF, preventing current from flowing and protecting your circuit. 
+
+Below is a step-by-step guide on how to choose these components:
+
+\subsection*{1. Selecting the PMOS Transistor}
+
+\begin{itemize}
+    \item \textbf{Voltage Rating (V\(_{DS}\)):} The PMOS should have a drain-source voltage rating higher than the maximum input voltage. Since the input can go up to 36V, a PMOS with at least 40V V\(_{DS}\) rating is good to provide a margin.
+    
+    \item \textbf{Current Rating (I\(_{D}\)):} The PMOS must handle the maximum current drawn by your circuit. Since the circuit could draw more than 2A, we choose a PMOS with a current rating higher than 2A, preferably 5A or more for safety.
+    
+    \item \textbf{R\(_{DS(on)}\):} This is the on-state resistance of the PMOS when it's fully turned on. Lower R\(_{DS(on)}\) values reduce power loss and heat dissipation. Usually a PMOS with R\(_{DS(on)}\) in the range of a few milliohms (m\(\Omega\)).
+\end{itemize}
+
+\subsection*{2. Selecting the Zener Diode}
+
+\begin{itemize}
+    \item \textbf{Zener Voltage (V\(_Z\)):} The Zener diode is used to ensure the gate-source voltage (V\(_{GS}\)) of the PMOS stays within safe limits. We go for a Zener voltage slightly higher than the PMOS gate threshold voltage (V\(_{GS(th)}\)) but lower than the maximum allowed V\(_{GS}\) for the PMOS.
+    
+    \item \textbf{For example:} If the PMOS has a V\(_{GS(th)}\) of -2V and a maximum V\(_{GS}\) of -20V, we could choose a Zener diode with a V\(_Z\) of 10V. This ensures the gate is clamped to a voltage that fully turns on the PMOS but doesn’t exceed the maximum V\(_{GS}\).
+\end{itemize}
+
+\subsection*{3. Selecting the Resistor}
+
+\begin{itemize}
+    \item \textbf{Resistor Value (R):} The resistor is used to limit the current flowing through the Zener diode and to ensure that the PMOS gate is pulled to the source ground when the input is connected with the correct polarity.
+    
+    \item \textbf{Calculation:} The resistor value can be calculated using Ohm's Law:
+    \[
+    R = \frac{V_{in} - V_{Z}}{I_{Z}}
+    \]
+    Where \(V_{in}\) is the input voltage, \(V_{Z}\) is the Zener voltage, and \(I_{Z}\) is the Zener current, which should be enough to activate the Zener diode but not too high to damage it (typically in the range of 5-20mA).
+    
+    \item \textbf{Example:} in this case we chose a Zener with a 10V rating and want a current of 10mA, and the input voltage is 24V, the resistor then value would be:
+    \[
+    R = \frac{24V - 10V}{10mA} = 1.4k\Omega
+    \]
+\end{itemize}
 
 \section{References}
 
