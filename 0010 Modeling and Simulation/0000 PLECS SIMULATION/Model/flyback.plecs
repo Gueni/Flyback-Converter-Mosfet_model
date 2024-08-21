@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 26; 1536, 780]
+    Location      [0, 23; 1536, 777]
     ZoomFactor    1.14436
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -3497,16 +3497,6 @@ Plecs {
             Signals       {"Capacitor Dissipation"}
           }
           Probe {
-            Component     "Rsnub"
-            Path          "RC Snub/Enable"
-            Signals       {"Resistor power"}
-          }
-          Probe {
-            Component     "Csnub"
-            Path          "RC Snub/Enable"
-            Signals       {"Capacitor Dissipation"}
-          }
-          Probe {
             Component     "Co"
             Path          ""
             Signals       {"Capacitor Dissipation"}
@@ -3516,12 +3506,17 @@ Plecs {
             Path          ""
             Signals       {"Resistor power"}
           }
+          Probe {
+            Component     "RC Snub"
+            Path          ""
+            Signals       {"RC Snubber Dissipation"}
+          }
         }
         Component {
           Type          Display
           Name          " RCD  R     [ W ]"
           Show          on
-          Position      [1360, 330]
+          Position      [1360, 335]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -3541,7 +3536,7 @@ Plecs {
           Type          Display
           Name          " SW Coss  [ W ]"
           Show          on
-          Position      [1360, 355]
+          Position      [1360, 360]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -3559,29 +3554,9 @@ Plecs {
         }
         Component {
           Type          Display
-          Name          " Rsnub      [ W ]"
+          Name          " Snub        [ W ]"
           Show          on
-          Position      [1360, 380]
-          Direction     up
-          Flipped       off
-          LabelPosition east
-          Frame         [-31, -11; 31, 11]
-          Parameter {
-            Variable      "Notation"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "Precision"
-            Value         "3"
-            Show          off
-          }
-        }
-        Component {
-          Type          Display
-          Name          " Csnub      [ W ]"
-          Show          on
-          Position      [1360, 405]
+          Position      [1360, 385]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -3601,7 +3576,7 @@ Plecs {
           Type          Display
           Name          " Co            [ W ]"
           Show          on
-          Position      [1360, 430]
+          Position      [1360, 410]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -3621,7 +3596,7 @@ Plecs {
           Type          Display
           Name          " Rshunt    [ W ]"
           Show          on
-          Position      [1360, 455]
+          Position      [1360, 435]
           Direction     up
           Flipped       off
           LabelPosition east
@@ -3647,7 +3622,7 @@ Plecs {
           LabelPosition south
           Parameter {
             Variable      "Width"
-            Value         "6"
+            Value         "5"
             Show          off
           }
         }
@@ -4663,53 +4638,6 @@ Plecs {
         }
         Connection {
           Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   2
-          Points        [1295, 360; 1295, 330]
-          DstComponent  " RCD  R     [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   3
-          Points        [1300, 370; 1300, 355]
-          DstComponent  " SW Coss  [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   4
-          DstComponent  " Rsnub      [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   5
-          Points        [1300, 390; 1300, 405]
-          DstComponent  " Csnub      [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   6
-          Points        [1295, 400; 1295, 430]
-          DstComponent  " Co            [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "Demux1"
-          SrcTerminal   7
-          Points        [1290, 410; 1290, 455]
-          DstComponent  " Rshunt    [ W ]"
-          DstTerminal   1
-        }
-        Connection {
-          Type          Signal
           SrcComponent  "From23"
           SrcTerminal   1
           Points        [985, 240]
@@ -4745,6 +4673,45 @@ Plecs {
           Points        [1005, 445; 1005, 425]
           DstComponent  "Mux4"
           DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux1"
+          SrcTerminal   2
+          Points        [1295, 365; 1295, 335]
+          DstComponent  " RCD  R     [ W ]"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux1"
+          SrcTerminal   3
+          Points        [1300, 375; 1300, 360]
+          DstComponent  " SW Coss  [ W ]"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux1"
+          SrcTerminal   4
+          DstComponent  " Snub        [ W ]"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux1"
+          SrcTerminal   5
+          Points        [1300, 395; 1300, 410]
+          DstComponent  " Co            [ W ]"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Demux1"
+          SrcTerminal   6
+          Points        [1295, 405; 1295, 435]
+          DstComponent  " Rshunt    [ W ]"
+          DstTerminal   1
         }
         RectangleAnnotation {
           Position     [180, 110]
@@ -14730,7 +14697,7 @@ Plecs {
       }
       Parameter {
         Variable      "Configuration"
-        Value         "1"
+        Value         "2"
         Show          off
       }
       Terminal {
@@ -14977,7 +14944,7 @@ Plecs {
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"AAAAH0AAAAJAAAAfQAAAAYAAAB9AAAABwAAAH0AAAAEAAAAfQAAAAUAAAB9AAAAAgAAAH0AAAADAA"
+"QAAAH0AAAAIAAAAfQAAAAcAAAB9AAAABgAAAH0AAAAFAAAAfQAAAAQAAAB9AAAAAwAAAH0AAAACAA"
 "AAfQAAAAEAAAB9AAAAegAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABPAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
@@ -16176,4 +16143,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "8F7RAW12DnZHdJCU/A7vi+L+YRome4utc2XbyFt2ooM="
+DemoSignature "4iO/6ehuXT1/lM0p3mzxkuII0b/khyBWVUNakfzwM38="

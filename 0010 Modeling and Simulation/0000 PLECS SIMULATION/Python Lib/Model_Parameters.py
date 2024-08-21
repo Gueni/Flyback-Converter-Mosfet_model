@@ -104,17 +104,17 @@ CTRL        = {
                }
 RCD         = {                                                                                             
                   'R'               : 1e5,                                                                  #? [Ohm]    - Resistor value in the RCD snubber 
-                  'C'               : 10e-6,                                                                #? [F]      - Capacitor value in the RCD snubber 
+                  'C'               : 100e-6,                                                               #? [F]      - Capacitor value in the RCD snubber 
                   'diode'		      : 'file:C4D40120D',                                                     #? [/]      - Diode model file path
                   'ron_diode'		   : 0.4,                                                                  #? [Ohm]    - Diode on-state resistance 
-                  'vf_diode'		   : 0.6,                                                                  #? [V]      - Diode forward voltage 
+                  'vf_diode'		   : 0.5,                                                                  #? [V]      - Diode forward voltage 
                   'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)       
                   'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes
                   'rth_ch'		      : 0.1,                                                                  #? [K/W]    - Heatsink-to-ambient thermal resistance 
                   't_init'		      : 25                                                                    #? [°C]     - Initial temperature of the diode 
                }
 RC_snub     = {                                                                                             
-                  'Rsnub'           : 10e3  ,                                                               #? [Ohm]    - Resistor value in the RC snubber
+                  'Rsnub'           : 100 ,                                                                 #? [Ohm]    - Resistor value in the RC snubber
                   'Csnub'           :  {                                                                                           
                                           'Config'		      : 2,                                            #? [/]      - Configuration of the snubber capacitor
                                           'Cap_s'    		   : 1e-6,                                         #? [F]      - Snubber capacitance value 
