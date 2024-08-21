@@ -101,7 +101,87 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [GeneratedDocument1]
+DocumentPath=Project Outputs for flyback\Test Points\Assembly Testpoint Report for flyback.csv
+DItemRevisionGUID=
+
+[GeneratedDocument2]
 DocumentPath=Project Outputs for flyback\Design Rule Check - flyback.html
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for flyback\Test Points\Fabrication Testpoint Report for flyback.csv
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for flyback\IPC2581\flyback.cvg
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for flyback\NC Drill\flyback.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for flyback\AutoCAD PCB\flyback.DWG
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for flyback\Gerber\flyback.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for flyback\GerberX2\flyback.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for flyback\DiffReport\flyback.html
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for flyback\DRC\flyback.html
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for flyback\ERC\flyback.html
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for flyback\FootprintComparison\flyback.html
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for flyback\NC Drill\flyback.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for flyback\PCB 3D Print\flyback.png
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for flyback\Gerber\flyback.REP
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for flyback\GerberX2\flyback.REP
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for flyback\ExportSTEP\flyback.step
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for flyback\NC Drill\flyback.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for flyback\Report Board Stack\flyback.xls
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for flyback\Pick Place\Pick Place for flyback.txt
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=C:\Users\MOHAME~1\AppData\Local\Temp\Qjz72C6.xls
 DItemRevisionGUID=
 
 [Configuration1]

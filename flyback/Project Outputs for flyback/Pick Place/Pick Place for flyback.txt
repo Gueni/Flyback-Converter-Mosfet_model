@@ -1,0 +1,48 @@
+Altium Designer Pick and Place Locations
+D:\4 WORKSPACE\Flyback-Converter-Mosfet_model\flyback\Project Outputs for flyback\Pick Place\Pick Place for flyback.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       21/08/24
+Time:       11:59
+Revision:   ad57a3f075c989d555177f2e563c22e3e26573ab
+Variant:    No variations
+Units used: mil
+
+Designator Comment           Layer    Footprint         Center-X(mil) Center-Y(mil) Rotation Description                                        
+R6         Resistor          TopLayer R0603             586.614       476.378       180      ""                                                 
+Q2         ""                TopLayer TO-252-3          490.050       695.000       90       ""                                                 
+D4         "Zener Diode"     TopLayer SOD-123-2         791.339       594.488       90       ""                                                 
+F3         Fiducial_3        TopLayer FIDUCIAL          3705.000      -55.000       0        ""                                                 
+F2         Fiducial_3        TopLayer FIDUCIAL          295.000       -55.000       0        ""                                                 
+F1         Fiducial_3        TopLayer FIDUCIAL          3705.000      1520.000      0        ""                                                 
+MH4        MH                TopLayer MH                4060.000      0.000         0        "Mounting Hole"                                    
+MH3        MH                TopLayer MH                4060.000      1455.000      0        "Mounting Hole"                                    
+MH2        MH                TopLayer MH                0.000         0.000         0        "Mounting Hole"                                    
+MH1        MH                TopLayer MH                0.000         1440.000      0        "Mounting Hole"                                    
+U1         LT8306RS6#WTRMPBF TopLayer SOT-23-6          1335.000      331.529       180      ""                                                 
+T1         Transformer       TopLayer 11328-T078        2360.000      760.000       0        ""                                                 
+R1         "Sense Resistors" TopLayer R1206             1330.709      460.630       180      "Current Sense Resistors - SMD 0.006 ohm 1% 1.5W2" 
+R5         Resistor          TopLayer R1206             1145.669      7.874         180      ""                                                 
+R4         Resistor          TopLayer R1206             1255.000      805.000       270      ""                                                 
+R2         Resistor          TopLayer R1206             1145.669      133.858       0        ""                                                 
+R3         Resistor          TopLayer R1206             1342.520      1090.551      270      ""                                                 
+Q1         "MOSFET N"        TopLayer TDSON-8           1468.786      740.940       0        ""                                                 
+J1         "PT Block 2P"     TopLayer TBP02R1-381-02BE  -10.000       725.000       270      ""                                                 
+J2         "PT Block 2P"     TopLayer TBP02R1-381-02BE  4056.201      716.201       90       ""                                                 
+D3         "Zener Diode"     TopLayer DIOM5226X220N     3767.716      559.055       90       ""                                                 
+D1         "Schottky Diode"  TopLayer SOD-128-2         1545.000      1035.000      180      ""                                                 
+D2         "Schottky Diode"  TopLayer SOD-128-2         3165.354      555.118       90       ""                                                 
+C5         50VDC             TopLayer CAP-1210          880.000       990.000       270      ""                                                 
+C4         50VDC             TopLayer CAP-1210          1020.000      997.250       270      ""                                                 
+C3         50VDC             TopLayer CAP-1210          1025.000      1195.000      90       ""                                                 
+C2         50VDC             TopLayer CAP-1210          875.000       1195.000      90       ""                                                 
+C1         50VDC             TopLayer ECAP-EEH-ZE1H101P 485.000       1145.000      180      ""                                                 
+C12        50VDC             TopLayer CAP-1210          1035.000      340.000       180      ""                                                 
+C6         25VDC             TopLayer CAP-1210          3767.716      818.898       90       ""                                                 
+C10        25VDC             TopLayer CAP-1210          3566.929      814.961       90       ""                                                 
+C9         25VDC             TopLayer CAP-1210          3383.937      820.394       90       ""                                                 
+C8         25VDC             TopLayer CAP-1210          3563.937      585.394       270      ""                                                 
+C7         25VDC             TopLayer CAP-1210          3383.937      590.394       270      ""                                                 
+C11        50VDC             TopLayer CAP-1210          1190.000      1090.000      270      ""                                                 
