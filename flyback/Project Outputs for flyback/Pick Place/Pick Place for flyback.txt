@@ -5,15 +5,16 @@ D:\4 WORKSPACE\Flyback-Converter-Mosfet_model\flyback\Project Outputs for flybac
 File Design Information:
 
 Date:       21/08/24
-Time:       11:59
-Revision:   ad57a3f075c989d555177f2e563c22e3e26573ab
+Time:       22:06
+Revision:   9386bdd31aced936f96f754d2f11afc02cdab3d0
 Variant:    No variations
 Units used: mil
 
 Designator Comment           Layer    Footprint         Center-X(mil) Center-Y(mil) Rotation Description                                        
+D1         "Schottky Diode"  TopLayer SOD-128-2         1543.307      1027.559      180      ""                                                 
 R6         Resistor          TopLayer R0603             586.614       476.378       180      ""                                                 
 Q2         ""                TopLayer TO-252-3          490.050       695.000       90       ""                                                 
-D4         "Zener Diode"     TopLayer SOD-123-2         791.339       594.488       90       ""                                                 
+D4         "Zener Diode"     TopLayer SOD-123-2         846.458       602.362       0        ""                                                 
 F3         Fiducial_3        TopLayer FIDUCIAL          3705.000      -55.000       0        ""                                                 
 F2         Fiducial_3        TopLayer FIDUCIAL          295.000       -55.000       0        ""                                                 
 F1         Fiducial_3        TopLayer FIDUCIAL          3705.000      1520.000      0        ""                                                 
@@ -27,22 +28,21 @@ R1         "Sense Resistors" TopLayer R1206             1330.709      460.630   
 R5         Resistor          TopLayer R1206             1145.669      7.874         180      ""                                                 
 R4         Resistor          TopLayer R1206             1255.000      805.000       270      ""                                                 
 R2         Resistor          TopLayer R1206             1145.669      133.858       0        ""                                                 
-R3         Resistor          TopLayer R1206             1342.520      1090.551      270      ""                                                 
+R3         Resistor          TopLayer R1206             1342.520      1086.614      270      ""                                                 
 Q1         "MOSFET N"        TopLayer TDSON-8           1468.786      740.940       0        ""                                                 
 J1         "PT Block 2P"     TopLayer TBP02R1-381-02BE  -10.000       725.000       270      ""                                                 
 J2         "PT Block 2P"     TopLayer TBP02R1-381-02BE  4056.201      716.201       90       ""                                                 
-D3         "Zener Diode"     TopLayer DIOM5226X220N     3767.716      559.055       90       ""                                                 
-D1         "Schottky Diode"  TopLayer SOD-128-2         1545.000      1035.000      180      ""                                                 
-D2         "Schottky Diode"  TopLayer SOD-128-2         3165.354      555.118       90       ""                                                 
-C5         50VDC             TopLayer CAP-1210          880.000       990.000       270      ""                                                 
-C4         50VDC             TopLayer CAP-1210          1020.000      997.250       270      ""                                                 
-C3         50VDC             TopLayer CAP-1210          1025.000      1195.000      90       ""                                                 
-C2         50VDC             TopLayer CAP-1210          875.000       1195.000      90       ""                                                 
+D3         "Zener Diode"     TopLayer DIOM5226X220N     3767.716      555.118       90       ""                                                 
+D2         "Schottky Diode"  TopLayer SOD-128-2         3173.228      551.181       90       ""                                                 
+C5         50VDC             TopLayer CAP-1210          881.890       996.063       270      ""                                                 
+C4         50VDC             TopLayer CAP-1210          1023.622      996.063       270      ""                                                 
+C3         50VDC             TopLayer CAP-1210          1027.559      1200.787      90       ""                                                 
+C2         50VDC             TopLayer CAP-1210          877.953       1200.787      90       ""                                                 
 C1         50VDC             TopLayer ECAP-EEH-ZE1H101P 485.000       1145.000      180      ""                                                 
-C12        50VDC             TopLayer CAP-1210          1035.000      340.000       180      ""                                                 
+C12        50VDC             TopLayer CAP-1210          1035.433      330.709       180      ""                                                 
 C6         25VDC             TopLayer CAP-1210          3767.716      818.898       90       ""                                                 
-C10        25VDC             TopLayer CAP-1210          3566.929      814.961       90       ""                                                 
-C9         25VDC             TopLayer CAP-1210          3383.937      820.394       90       ""                                                 
-C8         25VDC             TopLayer CAP-1210          3563.937      585.394       270      ""                                                 
-C7         25VDC             TopLayer CAP-1210          3383.937      590.394       270      ""                                                 
-C11        50VDC             TopLayer CAP-1210          1190.000      1090.000      270      ""                                                 
+C10        25VDC             TopLayer CAP-1210          3562.992      818.898       90       ""                                                 
+C9         25VDC             TopLayer CAP-1210          3377.953      822.835       90       ""                                                 
+C8         25VDC             TopLayer CAP-1210          3562.992      582.677       270      ""                                                 
+C7         25VDC             TopLayer CAP-1210          3377.953      582.677       270      ""                                                 
+C11        50VDC             TopLayer CAP-1210          1192.913      1094.488      270      ""                                                 
