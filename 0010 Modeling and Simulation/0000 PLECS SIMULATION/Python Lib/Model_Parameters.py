@@ -27,8 +27,8 @@ Sim_param 	= {
                   'rel_tol'		   : 1e-7                                                                  #? [/]     - Relative tolerance for the numerical solver
                }
 ToFile      = {   
-                  'Ts'              : 10e-6,                                                                #? [s]     - Sampling time for saving data
-                  'tsave' 	    	   : Sim_param['tSim']-0                                                   #? [s]     - Time point at which the data is saved
+                  'Ts'              : 0,                                                                    #? [s]     - Sampling time for saving data
+                  'tsave' 	    	   : Sim_param['tSim']-200e-6                                              #? [s]     - Time point at which the data is saved
                }  
 SW          = {                                                                                             
                   'Config'          : 1,                                                                    #? [/]      - Switch configuration 
@@ -76,10 +76,9 @@ Trafo       = {
                }	
 
 Cout        = {                                                                                             
-                  'Config'		      : 4,                                                                    #? [/]      - Configuration of the output capacitor
                   'Cap_s'    		   : 220e-6,                                                               #? [F]      - Capacitance value  
-                  'Resr_s'	         : 19e-9,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
-                  'Lesl_s'	         : 1e-19,                                                                #? [H]      - Equivalent series inductance of the capacitor 
+                  'Resr_s'	         : 19e-6,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
+                  'Lesl_s'	         : 1e-12,                                                                #? [H]      - Equivalent series inductance of the capacitor 
                   'Npara'		      : 1,                                                                    #? [/]      - Number of parallel capacitors
                   'Nseri'		      : 1,                                                                    #? [/]      - Number of series capacitors
                   'Vinit'		      : 0,                                                                    #? [V]      - Initial voltage across the capacitor 
@@ -106,7 +105,7 @@ RCD         = {
                   'R'               : 1e5,                                                                  #? [Ohm]    - Resistor value in the RCD snubber 
                   'C'               : 100e-6,                                                               #? [F]      - Capacitor value in the RCD snubber 
                   'diode'		      : 'file:C4D40120D',                                                     #? [/]      - Diode model file path
-                  'ron_diode'		   : 0.4,                                                                  #? [Ohm]    - Diode on-state resistance 
+                  'ron_diode'		   : 0.04,                                                                 #? [Ohm]    - Diode on-state resistance 
                   'vf_diode'		   : 0.5,                                                                  #? [V]      - Diode forward voltage 
                   'rth_ch_diode'		: 0.5,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)       
                   'num_par_diode'	: 1,                                                                    #? [/]      - Number of parallel diodes
