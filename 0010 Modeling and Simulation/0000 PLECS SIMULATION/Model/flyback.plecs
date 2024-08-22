@@ -849,7 +849,7 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Schematic {
-        Location      [0, 30; 1536, 784]
+        Location      [0, 23; 1536, 777]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -858,7 +858,7 @@ Plecs {
           Type          PlecsProbe
           Name          "Probe12"
           Show          off
-          Position      [770, 105]
+          Position      [640, 105]
           Direction     right
           Flipped       off
           LabelPosition west
@@ -872,7 +872,7 @@ Plecs {
           Type          Scope
           Name          "load_scope"
           Show          on
-          Position      [935, 110]
+          Position      [805, 110]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -977,7 +977,7 @@ Plecs {
           Type          Product
           Name          "Product2"
           Show          off
-          Position      [875, 130]
+          Position      [745, 130]
           Direction     up
           Flipped       off
           LabelPosition south
@@ -1001,7 +1001,7 @@ Plecs {
           Type          SignalDemux
           Name          "Demux18"
           Show          off
-          Position      [820, 105]
+          Position      [690, 105]
           Direction     right
           Flipped       on
           LabelPosition south
@@ -2019,20 +2019,20 @@ Plecs {
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [0, 26; 1536, 843]
-          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAACufwCAAAAA/sAAAAQAFoAb"
+          Location      [0, 26; 1536, 807]
+          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAADsfwCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAASoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
-"AA/////wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMBAAAAOAAAArkAAAB+AP///wAAAAMAAAeAAAA"
-"BIPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABfAP///wAABscAAAK5"
+"AA/////wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMBAAAAOAAAA7EAAAB+AP///wAAAAMAAAeAAAA"
+"BIPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAB4AAAABfAP///wAABscAAAOx"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
 "AAABQAAAGQAAAAIAAAAZAAAAAkAAABkAAAAAgAAAGQAAAADAAAAZAAAAAEAAABkAAAABgAAAGQAAA"
-"AHAAAAZAAAAAQAAABkAAAHawAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAE"
+"AHAAAAZAAAAAQAAABkAAABPAAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAE"
 "RAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
-"AAAAAZaAAAAAQAAAAAAAAPoAAAAACs="
+"AAAAAArAAAAAQAAAAAAAAPoAAAAACs="
           PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "QAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAA"
@@ -4433,6 +4433,110 @@ Plecs {
           Flipped       off
           LabelPosition south
         }
+        Component {
+          Type          Display
+          Name          "  Vset  [  V    ]"
+          Show          on
+          Position      [1045, 85]
+          Direction     up
+          Flipped       off
+          LabelPosition east
+          Frame         [-26, -11; 26, 11]
+          Parameter {
+            Variable      "Notation"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Precision"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Display
+          Name          "   Fs    [ KHz ]"
+          Show          on
+          Position      [1045, 110]
+          Direction     up
+          Flipped       off
+          LabelPosition east
+          Frame         [-26, -11; 26, 11]
+          Parameter {
+            Variable      "Notation"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Precision"
+            Value         "2"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Voltage\nSetpoint"
+          Show          off
+          Position      [905, 85]
+          Direction     right
+          Flipped       off
+          LabelPosition north
+          Frame         [-30, -10; 30, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "CTRL.Vset"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Voltage\nSetpoint2"
+          Show          off
+          Position      [905, 110]
+          Direction     right
+          Flipped       off
+          LabelPosition north
+          Frame         [-30, -10; 30, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "CTRL.Fs"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Gain
+          Name          "Gain"
+          Show          off
+          Position      [970, 110]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "1/1e3"
+            Show          off
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Probe12"
@@ -4444,7 +4548,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Product2"
           SrcTerminal   1
-          Points        [900, 130; 900, 120]
+          Points        [770, 130; 770, 120]
           DstComponent  "load_scope"
           DstTerminal   3
         }
@@ -4452,7 +4556,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Demux18"
           SrcTerminal   2
-          Points        [845, 100]
+          Points        [715, 100]
           Branch {
             DstComponent  "load_scope"
             DstTerminal   1
@@ -4466,13 +4570,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Demux18"
           SrcTerminal   3
-          Points        [835, 110]
+          Points        [705, 110]
           Branch {
             DstComponent  "load_scope"
             DstTerminal   2
           }
           Branch {
-            Points        [835, 135]
+            Points        [705, 135]
             DstComponent  "Product2"
             DstTerminal   3
           }
@@ -5261,6 +5365,27 @@ Plecs {
           DstComponent  "cout"
           DstTerminal   1
         }
+        Connection {
+          Type          Signal
+          SrcComponent  "Voltage\nSetpoint"
+          SrcTerminal   1
+          DstComponent  "  Vset  [  V    ]"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Voltage\nSetpoint2"
+          SrcTerminal   1
+          DstComponent  "Gain"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Gain"
+          SrcTerminal   2
+          DstComponent  "   Fs    [ KHz ]"
+          DstTerminal   1
+        }
         RectangleAnnotation {
           Position     [180, 110]
           Width        280
@@ -5412,6 +5537,22 @@ Plecs {
           Position     [1325, 495]
           Width        330
           Height       450
+          CornerRadius 3
+          Thickness    2
+          PenColor     4283760767
+          PenAlpha     1
+          BrushColor   10642217
+          BrushAlpha   0
+        } 
+        Annotation {
+          Name          "<html><body>\n<p><span style=\" font-size:18px; font-"
+"weight:600; color:#55007f;\">CTRL</span></p></body></html>"
+          Position      [870, 55]
+        } 
+        RectangleAnnotation {
+          Position     [1000, 110]
+          Width        320
+          Height       140
           CornerRadius 3
           Thickness    2
           PenColor     4283760767
@@ -15492,7 +15633,7 @@ Plecs {
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
 "QAAAH0AAAAIAAAAfQAAAAkAAAB9AAAAAgAAAH0AAAADAAAAfQAAAAEAAAB9AAAABgAAAH0AAAAHAA"
-"AAfQAAAAQAAAB9AAAAegAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABPAAA"
+"AAfQAAAAQAAAB9AAABCQAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAADeAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AArAAAAAQAAAAAAAAPoAAAAACs="
@@ -16690,4 +16831,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "PiGUWrfeEk00CISQYsC4kA7TyGXLm8wGRSSDjg7GndQ="
+DemoSignature "bN1v4SMLIXCMlQduSW3yK7JCzhM/BRnQgf8M4cHhpJE="
