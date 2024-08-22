@@ -20,9 +20,8 @@ port                                          = "1080"
 url                                           = f"http://localhost:{port}/RPC2"                                      
 modelname                                     = "flyback" 
 mdlvar                                        = mdl.ModelVars
-# Rsunb                                         = (np.arange(1    ,5    +1    ,1    )).tolist()
-# Csnub                                         = (np.arange(3    ,8     +1     ,1     )*1e-6).tolist()
-Fs                                            = (np.arange(1    ,500     +50     ,50     )*1e3).tolist()
+Vset                                          = (np.arange(5    ,24    +2    ,1    )).tolist()
+Fs                                            = np.linspace(20e3, 250e3, num=len(Vset)).tolist()
 plcsim                                        = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)   
 #?----------------------------------------------------------------------------------------------------------------------------------------
 plcsim.rpc_connect()                                                                    
@@ -31,7 +30,7 @@ plcsim.ClearAllTraces(mdl.scopes)
 cleardata.clear_data_folders()                                                                  
 inc  = 0
 for i, item1 in enumerate(Fs):
-    # for j, item2 in enumerate(Csnub):
+    for j, item2 in enumerate(Vset):
 
         utc_numeric                            = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
         sim_idx                                = inc+1
@@ -41,14 +40,13 @@ for i, item1 in enumerate(Fs):
         mdlvar['ToFile']['logfile']            = str((os.path.join(mdl.current_directory,mdl.logfile_path+f"Log_{utc_numeric}_{sim_idx}.log")).replace("\\", "/"))
         mdlvar['ToFile']['output_html']        = str((os.path.join(mdl.current_directory,mdl.output_html_path+f"Html_{utc_numeric}_{sim_idx}.html")).replace("\\", "/"))
         mdlvar['ToFile']['Traces']             = str((os.path.join(mdl.current_directory,mdl.Traces_path)).replace("\\", "/"))
-        # mdlvar['RC_snub']['Rsnub']             = Rsunb[i]
-        # mdlvar['RC_snub']['Csnub']['Cap_s']    = Csnub[j]
+        mdlvar['CTRL']['Vset']                 = Vset[j]
         mdlvar['CTRL']['Fs']                   = Fs[i]
 
         plcsim.logParams(mdlvar['ToFile']['logfile'],mdlvar)
         plcsim.Set_sim_param(mdlvar)
         plcsim.launch_sim(modelname=modelname)
-        plcsim.HoldAllTraces(mdl.scopes)
+        # plcsim.HoldAllTraces(mdl.scopes)
         # plcsim.saveAllTraces(mdlvar['scopes'],mdl,mdlvar['ToFile']['Traces'])
         post_process.gen_plots(resFile= mdlvar['ToFile']['ToFile_path'], html_file=mdlvar['ToFile']['output_html'],OPEN=False)
         inc+=1

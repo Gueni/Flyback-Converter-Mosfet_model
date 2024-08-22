@@ -9,7 +9,6 @@
 #!                                  
 #!----------------------------------------------------------------------------------------------------------------------------------------
 import os 
-import time 
 #!----------------------------------------------------------------------------------------------------------------------------------------                                                         
 current_directory   = os.getcwd()                                                                                                                                                              
 Traces_path         = "0010 Modeling and Simulation/0000 PLECS SIMULATION/Python Lib/RES/Traces/"           
@@ -21,7 +20,7 @@ model_directory     = (os.path.join(current_directory, model_path)).replace("\\"
 #!----------------------------------------------------------------------------------------------------------------------------------------
 Sim_param 	= {                                                                                            
                   'tSim'	    	   : 0.05,                                                                 #? [s]     - Total simulation time
-                  'load_tflip'	   : 0.05*   0.5,                                                          #? [s]     - Time at which the load changes state 
+                  'load_tflip'	   : 0.05/2,                                                               #? [s]     - Time at which the load changes state 
                   'maxStep'		   : 1e-3,                                                                 #? [s]     - Maximum simulation time step
                   'ZeroCross'       : 1000,                                                                 #? [/]     - Zero-crossing detection limit
                   'rel_tol'		   : 1e-7                                                                  #? [/]     - Relative tolerance for the numerical solver
@@ -35,11 +34,11 @@ SW          = {
                   'therm_mosfet'    : 'file:C3M0021120K',                                                   #? [/]      - MOSFET thermal model file path
                   'Rgon'            : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-on 
                   'Rgoff'           : 2.5,                                                                  #? [Ohm]    - Gate resistance for turn-off
-                  'ron_mosfet'      : 0.004,                                                                #? [Ohm]    - MOSFET on-state resistance 
+                  'ron_mosfet'      : 67e-3,                                                                #? [Ohm]    - MOSFET on-state resistance 
                   'Iinit'           : 0,                                                                    #? [A]      - Initial current through the MOSFET 
                   'Coss'            :  {                                                                                           
                                           'Config'		      : 5,                                            #? [/]      - Capacitance configuration
-                                          'Cap_s'    		   : 1e-12,                                        #? [F]      - Capacitance value 
+                                          'Cap_s'    		   : 197e-12,                                      #? [F]      - Capacitance value 
                                           'Resr_s'		      : 1e-12,                                        #? [F]      - Equivalent series resistance of the capacitance
                                           'Lesl_s'		      : 1e-12,                                        #? [H]      - Equivalent series inductance of the capacitance
                                           'Npara'		      : 1,                                            #? [/]      - Number of parallel capacitors
@@ -55,8 +54,8 @@ SW          = {
                   'T_init'          : 25,                                                                   #? [°C]     - Initial temperature of the MOSFET 
                   'Tamb'            : 25,                                                                   #? [°C]     - Ambient temperature 
                   't_init'          : 25,                                                                   #? [/]      - Initial time for thermal calculations 
-                  'rth_sw'          : 0.09,                                                                 #? [K/W]    - Thermal resistance between the switch junction and case 
-                  'rth_ch'          : 0.5,                                                                  #? [K/W]    - Thermal resistance between the case and heatsink 
+                  'rth_sw'          : 0.72,                                                                 #? [K/W]    - Thermal resistance between the switch junction and case 
+                  'rth_ch'          : 62.5,                                                                 #? [K/W]    - Thermal resistance between the case and heatsink 
                   'Rth'             : 0.34 	                                                               #? [K/W]    - Total thermal resistance 				    	                           
                }
 Trafo       = {                                                                                             
@@ -76,7 +75,7 @@ Trafo       = {
                }	
 
 Cout        = {                                                                                             
-                  'Cap_s'    		   : 220e-6,                                                               #? [F]      - Capacitance value  
+                  'Cap_s'    		   : 110e-6,                                                               #? [F]      - Capacitance value  
                   'Resr_s'	         : 19e-6,                                                                #? [Ohm]    - Equivalent series resistance of the capacitor 
                   'Lesl_s'	         : 1e-12,                                                                #? [H]      - Equivalent series inductance of the capacitor 
                   'Npara'		      : 1,                                                                    #? [/]      - Number of parallel capacitors
@@ -93,8 +92,8 @@ Load        = {
                   'Iinit'		      : 0,                                                                    #? [A]      - Initial current through the load 
                   't_switch'        : Sim_param['tSim']-Sim_param['load_tflip'],                            #? [s]      - Load switch timing 
                   't_dead'          : (Sim_param['tSim']-Sim_param['load_tflip'])/2,                        #? [s]      - Dead time for load switching 
-                  'Pout'		      : 30,                                                                   #? [W]      - Desireed output power
-                  'Vout1'		      : 12                                                                   #? [V]      - Desiered output voltage 
+                  'Pout'		      : 24,                                                                   #? [W]      - Desireed output power
+                  'Vout1'		      : 12                                                                    #? [V]      - Desiered output voltage 
                }
 CTRL        = {                                                                                             
                   'Vset'    		   :  Load['Vout1'] ,                                                      #? [V]      - Voltage set point for control 
