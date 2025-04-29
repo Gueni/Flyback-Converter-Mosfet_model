@@ -122,7 +122,7 @@ RCD         = {
                         'vf_diode'		      : 0.4,                                                                  #? [V]      - Diode forward voltage 
                         'rth_ch_diode'		   : 0.5,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)      
                   'Case_Amb_rth'		         : 0  ,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)      
-                        'Case_Cth'		      : 0  ,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)      
+                        'Case_Cth'		      : 0.1  ,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)      
                         'Case_Tinit'		   : 0  ,                                                                  #? [K/W]    - Diode thermal resistance (junction-to-case)      
                         'num_par_diode'		: 1,                                                                    #? [/]      - Number of parallel diodes
                         'rth'		            : 0.1,                                                                  #? [K/W]    - Heatsink-to-ambient thermal resistance 
