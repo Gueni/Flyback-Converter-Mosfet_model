@@ -23,7 +23,6 @@ modelname                              = "flyback"
 plcsim                                 = plc.simpy(url=url , port=port , path=mdl.model_directory , modelvar=mdlvar)    
 plcsim.rpc_connect()                                                                       
 plcsim.load_model()  
-cleardata.clear_data_folders()                                                                  
 #?----------------------------------------------------------------------------------------------------------------------------------------
 utc_numeric                            = str(int(time.strftime("%Y%m%d%H%M%S",  time.gmtime() )))
 sim_idx                                = 1

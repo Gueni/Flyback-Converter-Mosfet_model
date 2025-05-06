@@ -42,7 +42,7 @@ if args.mode == 'predict':
 # --- 2) Train mode ---------------------------------------------------------
 # User-configurable sweep parameters (only used for bounds, not data loading)
 CSV_DIR = 'D:\WORKSPACE\Flyback-Converter-Mosfet_model/0010 Modeling and Simulation/0000 PLECS SIMULATION\Python Lib\RES\CSV'
-V_target  = 15.0  # Target voltage for optimization
+V_target  =  9 # Target voltage for optimization
 files = sorted(glob.glob(os.path.join(CSV_DIR, '*.csv')))
 total_files = len(files)
 
@@ -110,7 +110,7 @@ res = gp_minimize(
 )
 print('Optimization complete.')
 print(f"Optimal inputs: Vset={res.x[0]:.3f}, Fs={res.x[1]:.1f}")
-print(f"Predicted Load Voltage: {model.predict([res.x])[0]:.3f}")
+print(f"Predicted Load Voltage: {model.predict(data['LoadVoltage'].values)[0]:.3f}")
 
 # --- 9) Save optimization result -----------------------------------------
 opt_df = pd.DataFrame([{  
