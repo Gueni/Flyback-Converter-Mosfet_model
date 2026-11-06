@@ -1,0 +1,7 @@
+"Net","Name","X Coord","Y Coord","Side","Hole Size","Type"
+"NetQ1_1,2,3,10","TP4-1","1468.504mil","456.693mil","Top","0mil","Surface mount"
+"Vin","TP1-1","1190mil","1240mil","Top","0mil","Surface mount"
+"NetC6_1","TP6-1","3173.228mil","763.779mil","Top","0mil","Surface mount"
+"NetD1_1","TP5-1","1661.417mil","909.449mil","Top","0mil","Surface mount"
+"NetQ1_4","TP3-1","1543.307mil","503.937mil","Top","0mil","Surface mount"
+"NetR2_2","TP2-1","1204.724mil","228.346mil","Top","0mil","Surface mount"
